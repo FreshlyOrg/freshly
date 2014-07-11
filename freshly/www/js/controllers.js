@@ -1,8 +1,5 @@
 angular.module('freshly.controllers', [])
 
-.controller('DashCtrl', function($scope) {
-})
-
 .controller('FriendsCtrl', function($scope, Friends) {
   $scope.friends = Friends.all();
 })
@@ -12,4 +9,8 @@ angular.module('freshly.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
+})
+
+.controller('ActivitiesController', function($scope) {
+
 });

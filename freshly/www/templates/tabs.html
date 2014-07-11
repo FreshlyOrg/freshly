@@ -5,21 +5,17 @@
 -->
 <ion-tabs class="tabs-icon-top">
 
-
   <!-- Pets Tab -->
-  <ion-tab title="Dashboard" icon="icon ion-home" href="#/tab/dash">
-    <ion-nav-view name="tab-dash"></ion-nav-view>
+  <ion-tab title="Activities" icon="icon ion-clipboard" ui-sref="tab.activities">
+    <ion-nav-view name="tab-activities"></ion-nav-view>
   </ion-tab>
 
-
   <!-- Adopt Tab -->
-  <ion-tab title="Friends" icon="icon ion-heart" href="#/tab/friends">
+  <ion-tab title="Friends" icon="icon ion-heart" ui-sref="tab.friends">
     <ion-nav-view name="tab-friends"></ion-nav-view>
   </ion-tab>
 
-
-  <!-- About Tab -->
-  <ion-tab title="Account" icon="icon ion-gear-b" href="#/tab/account">
+  <ion-tab title="Account" icon="icon ion-gear-b" ui-sref="tab.account" >
     <ion-nav-view name="tab-account"></ion-nav-view>
   </ion-tab>
 

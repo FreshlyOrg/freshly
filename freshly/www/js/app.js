@@ -38,6 +38,16 @@ angular.module('freshly', ['ionic', 'freshly.controllers', 'freshly.services'])
 
     // Each tab has its own nav history stack:
 
+    .state('tab.activities', {
+      url: '/activities',
+      views: {
+        'tab-activities': {
+          templateUrl: 'templates/tab-activities.html',
+          controller: 'ActivitiesController'
+        }
+      }
+    })
+
     .state('tab.dash', {
       url: '/dash',
       views: {
@@ -78,7 +88,7 @@ angular.module('freshly', ['ionic', 'freshly.controllers', 'freshly.services'])
     })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/activities');
 
 });
 
