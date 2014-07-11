@@ -1,7 +1,7 @@
 <ion-view title="Activities">
   <ion-content class="has-header padding">
-    <p ng-repeat="activity in activities">
-      activity.name
-    </p>
+    <button class="button button-full button-positive" ng-repeat="activity in activities" ng-click="showActivity(activity)">
+      {{ activity.name }}   
+    </button>
   </ion-content>
 </ion-view>
