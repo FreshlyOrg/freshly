@@ -1,14 +1,11 @@
 angular.module('freshly.controllers', [])
 
-.controller('FriendsCtrl', function($scope, Friends) {
-  $scope.friends = Friends.all();
+.controller('ExploreController', function($scope) {
+
 })
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
-})
+.controller('CaptureController', function($scope) {
 
-.controller('AccountCtrl', function($scope) {
 })
 
 .controller('ActivitiesController', function($scope) {

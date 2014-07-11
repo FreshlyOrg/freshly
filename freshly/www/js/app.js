@@ -41,54 +41,35 @@ angular.module('freshly', ['ionic', 'freshly.controllers', 'freshly.services'])
     .state('tab.activities', {
       url: '/activities',
       views: {
-        'tab-activities-list': {
-          templateUrl: 'templates/tab-activities-list.html',
+        'tab-activities': {
+          templateUrl: 'templates/tab-activities.html',
           controller: 'ActivitiesController'
         }
       }
     })
 
-    .state('tab.dash', {
-      url: '/dash',
+    .state('tab.explore', {
+      url: '/explore',
       views: {
-        'tab-dash': {
-          templateUrl: 'templates/tab-dash.html',
-          controller: 'DashCtrl'
+        'tab-explore': {
+          templateUrl: 'templates/tab-explore.html',
+          controller: 'ExploreController'
         }
       }
     })
 
-    .state('tab.friends', {
-      url: '/friends',
+    .state('tab.capture', {
+      url: '/capture',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
-          controller: 'FriendsCtrl'
-        }
-      }
-    })
-    .state('tab.friend-detail', {
-      url: '/friend/:friendId',
-      views: {
-        'tab-friends': {
-          templateUrl: 'templates/friend-detail.html',
-          controller: 'FriendDetailCtrl'
-        }
-      }
-    })
-
-    .state('tab.account', {
-      url: '/account',
-      views: {
-        'tab-account': {
-          templateUrl: 'templates/tab-account.html',
-          controller: 'AccountCtrl'
+        'tab-capture': {
+          templateUrl: 'templates/tab-capture.html',
+          controller: 'CaptureController'
         }
       }
     })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/activities');
+  $urlRouterProvider.otherwise('/tab/explore');
 
 });
 
