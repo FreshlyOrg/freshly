@@ -50,8 +50,12 @@ angular.module('freshly.controllers', [])
     },
 
   ];
-  $scope.showActivity = function(activity) {
-    $scope.activeActivity = activity.id;
+  $scope.toggleActivity = function(activity) {
+    if (activity.id === $scope.activeActivity) {
+      $scope.activeActivity = null;
+    } else {
+      $scope.activeActivity = activity.id;
+    }
   }
 
   $scope.activeActivity = null;

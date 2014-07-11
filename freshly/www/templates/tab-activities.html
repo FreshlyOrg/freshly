@@ -1,7 +1,7 @@
 <ion-view title="Activities">
   <ion-content class="has-header padding">
     <ul class="list">
-      <li class="item item-thumbnail-left" ng-repeat="activity in activities" ng-click="showActivity(activity)">
+      <li class="item item-thumbnail-left" ng-repeat="activity in activities" ng-click="toggleActivity(activity)">
         <img src="https://i.chzbgr.com/maxW500/5028242944/h69F5CC95/">
         <h2>{{ activity.name }}</h2>
         <div ng-if="activeActivity === activity.id">
