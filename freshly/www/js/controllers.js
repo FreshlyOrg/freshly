@@ -13,16 +13,46 @@ angular.module('freshly.controllers', [])
 
 .controller('ActivitiesController', function($scope) {
   $scope.activities = [
-    { name: 'Dodgeball' },
-    { name: 'Wax Museum' },
-    { name: 'Soccer' },
-    { name: 'Segway Tour' },
-    { name: 'Volunteer Boys and Girls Club' },
-    { name: 'Cal Academy Nightlife' },
-    { name: 'Exploratorium Nightlife' },
+    { name: 'Dodgeball',
+      description: 'I want to do this.',
+      tags: ['Fun', 'Cool'],
+      id: 1
+    },
+    { name: 'Wax Museum',
+      description: 'I want to do this.',
+      tags: ['Fun', 'Cool'],
+      id: 2
+    },
+    { name: 'Soccer',
+      description: 'I want to do this.',
+      tags: ['Fun', 'Cool'],
+      id: 3
+    },
+    { name: 'Segway Tour',
+      description: 'I want to do this.',
+      tags: ['Fun', 'Cool'],
+      id: 4
+    },
+    { name: 'Volunteer Boys and Girls Club',
+      description: 'I want to do this.',
+      tags: ['Fun', 'Cool'],
+      id: 5
+    },
+    { name: 'Cal Academy Nightlife',
+      description: 'I want to do this.',
+      tags: ['Fun', 'Cool'],
+      id: 6
+    },
+    { name: 'Exploratorium Nightlife',
+      description: 'I want to do this.',
+      tags: ['Fun', 'Cool'],
+      id: 7
+    },
 
   ];
   $scope.showActivity = function(activity) {
-    console.log(activity.name);
+    $scope.activeActivity = activity.id;
   }
+
+  $scope.activeActivity = null;
 });

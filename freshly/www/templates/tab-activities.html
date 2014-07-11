@@ -1,7 +1,24 @@
 <ion-view title="Activities">
   <ion-content class="has-header padding">
-    <button class="button button-full button-positive" ng-repeat="activity in activities" ng-click="showActivity(activity)">
-      {{ activity.name }}   
-    </button>
+    <ul class="list">
+      <li class="item item-thumbnail-left" ng-repeat="activity in activities" ng-click="showActivity(activity)">
+        <img src="https://i.chzbgr.com/maxW500/5028242944/h69F5CC95/">
+        <h2>{{ activity.name }}</h2>
+        <div ng-if="activeActivity === activity.id">
+          <dl>
+            <dt>Description:</dt>
+            <dd>{{ activity.description }}</dd>
+            <dt>Tags:</dt>
+            <dd>
+              <ul>
+                <li ng-repeat="tag in activity.tags">
+                  {{ tag }}
+                </li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+      </li>
+    </ul>
   </ion-content>
 </ion-view>
