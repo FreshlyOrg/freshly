@@ -33,7 +33,7 @@ angular.module('freshly.controllers', [])
       tags: ['Fun', 'Cool'],
       id: 4
     },
-    { name: 'Volunteer Boys and Girls Club',
+    { name: 'Volunteer at Boys and Girls Club',
       description: 'I want to do this.',
       tags: ['Fun', 'Cool'],
       id: 5

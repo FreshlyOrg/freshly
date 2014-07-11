@@ -41,8 +41,8 @@ angular.module('freshly', ['ionic', 'freshly.controllers', 'freshly.services'])
     .state('tab.activities', {
       url: '/activities',
       views: {
-        'tab-activities': {
-          templateUrl: 'templates/tab-activities.html',
+        'tab-activities-list': {
+          templateUrl: 'templates/tab-activities-list.html',
           controller: 'ActivitiesController'
         }
       }
