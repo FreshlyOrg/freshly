@@ -7,7 +7,7 @@ angular.module('freshly.activities', [])
     url: '/activities',
     views: {
       'app-activities': {
-        templateUrl: 'app/controllers_views/capture/app-activities.html',
+        templateUrl: 'app/controllers_views/activities/app-activities.html',
         controller: 'ActivitiesController'
       }
     }
