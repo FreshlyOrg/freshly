@@ -32,42 +32,11 @@ angular.module('freshly', [
 
   $stateProvider
 
-    .state('app', {
-      url: '/app',
-      abstract: true,
-      templateUrl: 'app/app.html'
-    })
-
-    // .state('test', {
-    //   url: "/test",
-    //   templateUrl: 'templates/tab-activities.html'
-    // })
-
-    // .state('tab', {
-    //   url: "/tab",
-    //   abstract: true,
-    //   templateUrl: "templates/tabs.html"
-    // })
-
-    // .state('tab.explore', {
-    //   url: '/explore',
-    //   views: {
-    //     'tab-explore': {
-    //       templateUrl: 'templates/tab-explore.html',
-    //       controller: 'ExploreController'
-    //     }
-    //   }
-    // })
-
-    // .state('tab.capture', {
-    //   url: '/capture',
-    //   views: {
-    //     'tab-capture': {
-    //       templateUrl: 'templates/tab-capture.html',
-    //       controller: 'CaptureController'
-    //     }
-    //   }
-    // })
+  .state('app', {
+    url: '/app',
+    abstract: true,
+    templateUrl: 'app/app.html'
+  })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/map');
