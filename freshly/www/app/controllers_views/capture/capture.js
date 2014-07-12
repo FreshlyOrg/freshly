@@ -4,39 +4,16 @@ angular.module('freshly.capture', [])
 
   $stateProvider
 
-    .state('test', {
-      url: "/test",
-      templateUrl: 'templates/tab-activities.html'
-    })
-
-    .state('tab', {
-      url: "/tab",
-      abstract: true,
-      templateUrl: "templates/tabs.html"
-    })
-
-    .state('tab.explore', {
-      url: '/explore',
-      views: {
-        'tab-explore': {
-          templateUrl: 'templates/tab-explore.html',
-          controller: 'ExploreController'
-        }
-      }
-    })
-
-    .state('tab.capture', {
-      url: '/capture',
-      views: {
-        'tab-capture': {
-          templateUrl: 'templates/tab-capture.html',
+    .state('app.capture', {
+      url: "/capture",
+      view: {
+        'app-capture': {
+          templateUrl: 'app/controllers_views/capture/app-capture.html',
           controller: 'CaptureController'
         }
-      }
-    })
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/explore');
+      },
+      templateUrl: 'app-capture.html'
+    });
 
 })
 

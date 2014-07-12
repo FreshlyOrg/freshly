@@ -3,11 +3,11 @@ angular.module('freshly.activities', [])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-  .state('tab.activities', {
+  .state('app.activities', {
     url: '/activities',
     views: {
-      'tab-activities': {
-        templateUrl: 'tab-activities.html',
+      'app-activities': {
+        templateUrl: 'app/controllers_views/capture/app-activities.html',
         controller: 'ActivitiesController'
       }
     }

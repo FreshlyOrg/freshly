@@ -5,7 +5,14 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('freshly', ['ionic', 'freshly.activities', 'freshly.map', 'freshly.capture'])
+angular.module('freshly', [
+  'ionic',
+  'freshly.activities',
+  'freshly.map',
+  'freshly.capture',
+  'freshly.directives',
+  'freshly.services'
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -25,39 +32,45 @@ angular.module('freshly', ['ionic', 'freshly.activities', 'freshly.map', 'freshl
 
   $stateProvider
 
-    .state('test', {
-      url: "/test",
-      templateUrl: 'templates/tab-activities.html'
-    })
-
-    .state('tab', {
-      url: "/tab",
+    .state('app', {
+      url: '/app',
       abstract: true,
-      templateUrl: "templates/tabs.html"
+      templateUrl: 'app/app.html'
     })
 
-    .state('tab.explore', {
-      url: '/explore',
-      views: {
-        'tab-explore': {
-          templateUrl: 'templates/tab-explore.html',
-          controller: 'ExploreController'
-        }
-      }
-    })
+    // .state('test', {
+    //   url: "/test",
+    //   templateUrl: 'templates/tab-activities.html'
+    // })
 
-    .state('tab.capture', {
-      url: '/capture',
-      views: {
-        'tab-capture': {
-          templateUrl: 'templates/tab-capture.html',
-          controller: 'CaptureController'
-        }
-      }
-    })
+    // .state('tab', {
+    //   url: "/tab",
+    //   abstract: true,
+    //   templateUrl: "templates/tabs.html"
+    // })
+
+    // .state('tab.explore', {
+    //   url: '/explore',
+    //   views: {
+    //     'tab-explore': {
+    //       templateUrl: 'templates/tab-explore.html',
+    //       controller: 'ExploreController'
+    //     }
+    //   }
+    // })
+
+    // .state('tab.capture', {
+    //   url: '/capture',
+    //   views: {
+    //     'tab-capture': {
+    //       templateUrl: 'templates/tab-capture.html',
+    //       controller: 'CaptureController'
+    //     }
+    //   }
+    // })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/explore');
+  $urlRouterProvider.otherwise('/app/map');
 
 });
 
