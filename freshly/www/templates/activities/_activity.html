@@ -1,5 +1,5 @@
-
-<div>
+<h2>{{ activity.name }}</h2>
+<div class="item" ng-if="viewActivity === activity.id">
   <img src="https://i.chzbgr.com/maxW500/5028242944/h69F5CC95/">
   <dl>
     <dt>Description:</dt>
@@ -7,7 +7,7 @@
     <dt>Tags:</dt>
     <dd>
       <ul>
-        <li ng-repeat="tag in activity.tags">
+        <li ng-repeat="tag in activity.tags | orderBy:tag">
           {{ tag }}
         </li>
       </ul>
