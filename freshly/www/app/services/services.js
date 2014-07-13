@@ -1,26 +1,40 @@
 angular.module('freshly.services', [])
 
-/**
- * A simple example service that returns some data.
- */
-.factory('Friends', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-  var friends = [
-    { id: 0, name: 'Scruff McGruff' },
-    { id: 1, name: 'G.I. Joe' },
-    { id: 2, name: 'Miss Frizzle' },
-    { id: 3, name: 'Ash Ketchum' }
-  ];
-
+.factory('Activities', function($http) {
   return {
-    all: function() {
-      return friends;
+    getActivities: function() {
+      return $http({
+        method: 'GET',
+        url: 'http://fresh.ly/api/activities'
+      });
     },
-    get: function(friendId) {
-      // Simple index lookup
-      return friends[friendId];
+    addActivity: function(activity) {
+      return $http({ 
+        method: 'POST',
+        url: 'http://fresh.ly/api/activities',
+        data: activity,
+        dataType: 'json'
+      });
+    },
+    getActivity: function(activity_id) {
+      return $http({
+        method: 'GET',
+        url: 'http://fresh.ly/api/activity/' + activity_id
+      });
+    },
+    updateActivity: function(activity) {
+      return $http({ 
+        method: 'PUT',
+        url: 'http://fresh.ly/api/activity/' + activity._id,
+        data: activity,
+        dataType: 'json'
+      })
+    },
+    deleteActivity: function(activity_id) {
+      return $http({
+        method: 'DELETE',
+        url: 'http://fresh.ly/api/activity/' + activity_id
+      });
     }
-  }
+  };
 });

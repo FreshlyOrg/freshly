@@ -14,52 +14,20 @@ angular.module('freshly.activities', [])
   })
 })
 
-.controller('ActivitiesController', function($scope) {
-  $scope.activities = [
-    { name: 'Dodgeball',
-      description: 'I want to do this.',
-      tags: ['Fun', 'Cool'],
-      id: 1
-    },
-    { name: 'Wax Museum',
-      description: 'I want to do this.',
-      tags: ['Fun', 'Cool'],
-      id: 2
-    },
-    { name: 'Soccer',
-      description: 'I want to do this.',
-      tags: ['Fun', 'Cool'],
-      id: 3
-    },
-    { name: 'Segway Tour',
-      description: 'I want to do this.',
-      tags: ['Fun', 'Cool'],
-      id: 4
-    },
-    { name: 'Volunteer at Boys and Girls Club',
-      description: 'I want to do this.',
-      tags: ['Fun', 'Cool'],
-      id: 5
-    },
-    { name: 'Cal Academy Nightlife',
-      description: 'I want to do this.',
-      tags: ['Fun', 'Cool'],
-      id: 6
-    },
-    { name: 'Exploratorium Nightlife',
-      description: 'I want to do this.',
-      tags: ['Fun', 'Cool'],
-      id: 7
-    },
+.controller('ActivitiesController', function($scope, Activities) {
+  $scope.activities = [];
+  Activities.getActivities().then(function(response) {
+    console.log(response.data);
+    $scope.activities = response.data;
+  }).catch(function(err) {
+    console.log(err);
+  });
 
-  ];
   $scope.toggleActivity = function(activity) {
-    if (activity.id === $scope.viewActivity) {
+    if (activity._id === $scope.viewActivity) {
       $scope.viewActivity = null;
     } else {
-      $scope.viewActivity = activity.id;
+      $scope.viewActivity = activity._id;
     }
   }
-
-  $scope.viewActivity = null;
 });
