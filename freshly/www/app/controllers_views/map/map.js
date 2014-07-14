@@ -20,27 +20,19 @@ angular.module('freshly.map', [
   
 
   $scope.location = {
-            zoom: 16,
-            autoDiscover: true
-        };
+    zoom: 16,
+    autoDiscover: true
+  };
 
+  // Map ID for [username].[project]
+  // jakecadams.io9ec4o2
 
-  $scope.getLocation = function(location) {
-
-       var callback = function(position){
-        var newLocation = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-            zoom: 4
-        }
-        location($scope.newLocation);
-      }
-
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(callback);
-      } else { 
-          console.log("Geolocation is not supported by this browser.");
-      }
+  $scope.tiles = {
+    url: "https://{s}.tiles.mapbox.com/v3/jakecadams.io9ec4o2/{z}/{x}/{y}.png",
+    options: {
+        attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
+    }
   }
 
 });
+
