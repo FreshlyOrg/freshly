@@ -16,23 +16,27 @@ angular.module('freshly.map', [
   });
 })
 
-.controller('MapController', function($scope) {
+.controller('MapController', [ "$scope", "$log", "leafletData", function($scope, $log, leafletData) {
   
 
   $scope.location = {
     zoom: 16,
     autoDiscover: true
   };
-
-  // Map ID for [username].[project]
-  // jakecadams.io9ec4o2
-
+  
   $scope.tiles = {
     url: "https://{s}.tiles.mapbox.com/v3/jakecadams.io9ec4o2/{z}/{x}/{y}.png",
     options: {
-        attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
+        attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms</a>'
     }
   }
 
-});
+  leafletData.getMap('map').then(function(map) {
 
+    //right click on computer or hold on mobile
+    map.on('contextmenu', function(e) {
+      var newMarker = new L.marker(e.latlng).addTo(map);
+    });
+  });
+
+}])
