@@ -35,19 +35,15 @@ angular.module('freshly.activities', [])
     $scope.savedActivity = activity;
     $scope.editing = activity._id;
   };
-  
+
   $scope.cancelEdit = function(activity) {
     $scope.editing = null;
-    Activities.getActivity(activity._id).then(function(response) {
-      console.log(response);
-    }).catch(function(err) {
-      console.log(err);
-    });
+    $scope.refreshActivities();
   };
 
   $scope.saveEdit = function(activity) {
-    Activity.updateActivity(activity).then(function(response) {
-      console.log(response);
+    Activities.updateActivity(activity).then(function(response) {
+      $scope.editing = null;
     }).catch(function(err) {
       console.log(err);
     });
@@ -55,7 +51,7 @@ angular.module('freshly.activities', [])
 
   $scope.deleteActivity = function(activity) {
     if (confirm("Are you sure you want to delete this activity?")) {
-      Activity.deleteActivity(activity).then(function(response) {
+      Activities.deleteActivity(activity).then(function(response) {
         console.log(response);
       }).catch(function(err) {
         console.log(err);
