@@ -1,5 +1,11 @@
-<ion-view title="Capture">
+<ion-view title="Capture Header Bar">
   <ion-content class="has-header padding">
-    <h1>Capture</h1>
-  </ion-content>
+    <!-- Button the captures photo -->
+    <button ng-click="openCamera()" class="button">Camera</button>
+    <img ng-src="{{lastPhoto}}" style="max-width: 100%">
+
+    <!-- Button that saves photo to db and returns to map -->
+
+
+  </ion-content scroll="false">
 </ion-view>
