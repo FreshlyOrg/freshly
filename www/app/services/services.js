@@ -19,13 +19,13 @@ angular.module('freshly.services', [])
     getActivity: function(activity_id) {
       return $http({
         method: 'GET',
-        url: 'http://fresh.ly/api/activity/' + activity_id
+        url: 'http://fresh.ly/api/activities/' + activity_id
       });
     },
     updateActivity: function(activity) {
       return $http({ 
         method: 'PUT',
-        url: 'http://fresh.ly/api/activity/' + activity._id,
+        url: 'http://fresh.ly/api/activities/' + activity._id,
         data: activity,
         dataType: 'json'
       })
@@ -33,7 +33,7 @@ angular.module('freshly.services', [])
     deleteActivity: function(activity_id) {
       return $http({
         method: 'DELETE',
-        url: 'http://fresh.ly/api/activity/' + activity_id
+        url: 'http://fresh.ly/api/activities/' + activity_id
       });
     }
   };
