@@ -51,8 +51,9 @@ angular.module('freshly.activities', [])
 
   $scope.deleteActivity = function(activity) {
     if (confirm("Are you sure you want to delete this activity?")) {
-      Activities.deleteActivity(activity).then(function(response) {
-        console.log(response);
+      Activities.deleteActivity(activity._id).then(function(response) {
+        console.log('Activity deleted');
+        $scope.refreshActivities();
       }).catch(function(err) {
         console.log(err);
       });
