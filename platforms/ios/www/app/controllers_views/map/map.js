@@ -35,7 +35,7 @@ angular.module('freshly.map', [
   var markers = [
      {lat: 40.252149412988935,lng: -111.6533875465393},
      {lat: 40.252804476697165,lng: -111.64948225021361},
-     {lat: 40.252804476697165,lng: -111.66040420532227} 
+     {lat: 40.252804476697165,lng: -111.66040420532227}
   ]
 
 
@@ -63,8 +63,6 @@ angular.module('freshly.map', [
     });
 
   });
-
-
 
   var inBounds = function(marker, map){
     var northEast = map.getBounds().getNorthEast();

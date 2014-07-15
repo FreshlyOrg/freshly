@@ -1,5 +1,50 @@
-<ion-view title="Capture">
+<ion-view title="Capture Header Bar">
   <ion-content class="has-header padding">
-    <h1>Capture</h1>
-  </ion-content>
+    <!-- Button the captures photo -->
+    <button ng-click="openCamera()" class="button">Camera</button>
+    <img ng-src="{{lastPhoto}}" style="max-width: 30%">
+
+    <!-- Button that saves photo to db and returns to map -->
+
+
+  </ion-content scroll="false">
 </ion-view>
+
+
+<!--
+
+//
+//
+// JASEN: BAD CODE COPIED FROM PREVIOUS ATTEMPT... JUST FOR REFERENCING ROUGH LAYOUT
+  <ion-side-menu side="left">
+        <ion-header-bar class="stable">
+          <h1 class="title">Capture</h1>
+        </ion-header-bar>
+        <ion-content scroll="false">
+
+          &lt;!&ndash;Camera&ndash;&gt;
+          <div class="row" class="captureCamera" ng-controller="CapturePhotoController">
+            <button class="button icon ion-ios7-camera button-full" ng-click="getCamera()"></button>
+            <img src=" {{ lastPhoto }}" style="max-width: 100%">
+          </div>
+
+          Text
+            <div class="list">
+
+              <label class="item item-input">
+                <input type="text" placeholder="Activity Name"/>
+              </label>
+
+              <label class="item item-input">
+                <textarea placeholder="Notes"></textarea>
+              </label>
+
+          </div>
+
+          Action Buttons
+          <div class="row" class="captureOptions" ng-controller="CaptureSaveController">
+            <button class="button button-balanced button-full" ng-click="save()">Save</button>
+          </div>
+
+        </ion-content>
+      </ion-side-menu>

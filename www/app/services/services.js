@@ -9,7 +9,7 @@ angular.module('freshly.services', [])
       });
     },
     addActivity: function(activity) {
-      return $http({ 
+      return $http({
         method: 'POST',
         url: 'http://fresh.ly/api/activities',
         data: activity,
@@ -23,7 +23,7 @@ angular.module('freshly.services', [])
       });
     },
     updateActivity: function(activity) {
-      return $http({ 
+      return $http({
         method: 'PUT',
         url: 'http://fresh.ly/api/activities/' + activity._id,
         data: activity,
@@ -37,4 +37,22 @@ angular.module('freshly.services', [])
       });
     }
   };
-});
+})
+
+// JASEN: Access the device's camera
+.factory('Camera', ['$q', function($q) {
+  return {
+    getPicture: function(options) {
+      var q = $q.defer();
+
+      navigator.camera.getPicture(function(result) {
+        // Do any magic you need
+        q.resolve(result);
+      }, function(err) {
+        q.reject(err);
+      }, options);
+
+      return q.promise;
+    }
+  };
+}]);
