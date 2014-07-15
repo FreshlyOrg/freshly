@@ -1,16 +1,48 @@
-<h2>{{ activity.name }}</h2>
-<div class="item" ng-if="viewActivity === activity._id">
-  <img src="https://i.chzbgr.com/maxW500/5028242944/h69F5CC95/">
-  <dl>
-    <dt>Description:</dt>
-    <dd>{{ activity.description }}</dd>
-    <dt>Tags:</dt>
-    <dd>
-      <ul>
-        <li ng-repeat="tag in activity.tags | orderBy:tag">
-          {{ tag }}
-        </li>
-      </ul>
-    </dd>
-  </dl>
+<div class="list card">
+  <div class="item">
+    <label>
+      <input type="text" placeholder="Name" ng-readonly="activity._id !== editing" ng-model="activity.name" />
+    </label>
+  </div>
+  <div class="item item-body" ng-if="true || viewActivity === activity._id">
+    <div class="item-image">
+      <img class="full-image" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSEy4tORxith4Jfc8Hm73fBfg6jzJx7D8WK7RJTGhvxKgjtl1RxZA" />
+    </div>
+    <label class="item item-input">
+      <span class="input-label">Description</span>
+      <input type="text" placeholder="Description" ng-readonly="activity._id !== editing" ng-model="activity.description"/>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Cost</span>
+      <input type="text" placeholder="Cost" ng-readonly="activity._id !== editing" ng-model="activity.cost"/>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Time</span>
+      <input type="text" placeholder="Time" ng-readonly="activity._id !== editing" ng-model="activity.time"/>
+    </label>
+    <label class="item item-input" ng-if="activity._id === editing">
+      <span class="input-label">New Tag</span>
+      <input type="text" placeholder="New Tag"><button class="button">Add Tag</button></input>
+    </label>
+    
+    <ul class="list">
+      <li ng-repeat="tag in activity.tags">
+        {{tag}}
+      </li>
+    </ul>
+  </div>
+  <div class="item tabs tabs-secondary tabs-icon-center">
+    <button class="tab-item" ng-if="activity._id !== editing" ng-click="editActivity(activity)">
+      <i class="icon ion-edit"></i>
+    </button>
+    <button class="tab-item" ng-if="activity._id === editing" ng-click="saveEdit(activity)">
+      <i class="icon ion-archive"></i>
+    </button>
+    <button class="tab-item" ng-if="activity._id === editing" ng-click="cancelEdit(activity)">
+      <i class="icon ion-arrow-return-left"></i>
+    </button>
+    <button class="tab-item" ng-if="activity._id !== editing" ng-click="deleteActivity(activity)">
+      <i class="icon ion-trash-a"></i>
+    </p>
+  </div>
 </div>
