@@ -1,4 +1,4 @@
-/home/greg/Dropbox/hack-reactor/freshly/freshly/platforms/android/ant-gen/com/ionicframework/starter/R.java \
+/home/greg/Dropbox/hack-reactor/freshly/freshly/platforms/android/ant-gen/com/ionicframework/FreshlyActivityApp/R.java \
  : /home/greg/Dropbox/hack-reactor/freshly/freshly/platforms/android/res/drawable-port-hdpi/screen.png \
 /home/greg/Dropbox/hack-reactor/freshly/freshly/platforms/android/res/drawable-land-mdpi/screen.png \
 /home/greg/Dropbox/hack-reactor/freshly/freshly/platforms/android/res/drawable-land-hdpi/screen.png \
