@@ -33,33 +33,39 @@ angular.module('freshly.map', [
 
 
   var markers = [
-     {lat: 40.252149412988935,lng: -111.6533875465393},
-     {lat: 40.252804476697165,lng: -111.64948225021361},
-     {lat: 40.252804476697165,lng: -111.66040420532227}
+    {lat: 40.252149412988935,lng: -111.6533875465393},
+    {lat: 40.252804476697165,lng: -111.64948225021361},
+    {lat: 40.252804476697165,lng: -111.66040420532227}
   ]
 
 
 
   leafletData.getMap('map').then(function(map) {
 
+    var markerGroup = new L.layerGroup();
+    map.addLayer(markerGroup);
     //right click on computer or hold on mobile
     map.on('contextmenu', function(e) {
-      var newMarker = new L.marker(e.latlng).addTo(map);
+      var marker = new L.marker(e.latlng);
+      markerGroup.addLayer(marker);     
+      var lat = e.latlng.lat;
+      var lng = e.latlng.lng;
       var latlng = {
-        lat: e.latlng.lat,
-        lng: e.latlng.lng
+        lat: lat,
+        lng: lng
       }
-      console.log(latlng);
       markers.push(latlng);
     });
 
     map.on('move', function(e) {
-      console.log('moved');
+      markerGroup.clearLayers();
       for (var i = 0; i < markers.length; i++) {
         if(inBounds(markers[i], map)){
-          var newMarker = new L.marker(markers[i]).addTo(map);
+          var marker = new L.marker(markers[i]);
+          markerGroup.addLayer(marker);          
         }
       }
+      console.log(markerGroup.getLayers());
     });
 
   });
