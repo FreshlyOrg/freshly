@@ -1,2 +1,2 @@
-client/www/lib/*
-freshly/www/lib/*
+node_modules/
+www/lib
