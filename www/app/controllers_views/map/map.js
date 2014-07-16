@@ -16,7 +16,7 @@ angular.module('freshly.map', [
   });
 })
 
-.controller('MapController', [ "$scope", "$log", "leafletData", function($scope, $log, leafletData) {
+.controller('MapController', [ "$scope", "Activities", "$log", "leafletData", function($scope, Activities, $log, leafletData) {
   
   // sets default zoom and sets the center to the users location with autoDiscover
   $scope.location = {
@@ -31,6 +31,14 @@ angular.module('freshly.map', [
     }
   }
 
+
+  var refreshActivities = function() {
+    Activities.getActivities().then(function(response) {
+      $scope.activities = response.data;
+    }).catch(function(err) {
+      console.log(err);
+    });
+  };
 
   var markers = [
     {lat: 40.252149412988935,lng: -111.6533875465393},
