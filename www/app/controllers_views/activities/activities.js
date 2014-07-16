@@ -14,14 +14,7 @@ angular.module('freshly.activities', [])
   })
 })
 
-.controller('ActivitiesController', function($scope, Activities) {
-  $scope.refreshActivities = function() {
-    Activities.getActivities().then(function(response) {
-      $scope.activities = response.data;
-    }).catch(function(err) {
-      console.log(err);
-    });
-  };
+.controller('ActivitiesController', function($scope, $location, Activities) {
 
   $scope.toggleActivity = function(activity) {
     if (!$scope.editing) {
@@ -31,6 +24,28 @@ angular.module('freshly.activities', [])
         $scope.viewActivity = activity._id;
       }
     }
+    $location.hash(activity._id);
+    $anchorScroll();
+  };
+
+  $scope.addTag = function(activity) {
+    if (activity.newTag) {
+      if (!Array.isArray(activity.tags)) {
+        activity.tags = [];
+      }
+      if (activity.tags.indexOf(activity.newTag) === -1) {
+        activity.tags.push(activity.newTag);
+      }
+    }
+    activity.newTag = '';
+  }
+
+  $scope.refreshActivities = function() {
+    Activities.getActivities().then(function(response) {
+      $scope.activities = response.data;
+    }).catch(function(err) {
+      console.log(err);
+    });
   };
 
   $scope.editActivity = function(activity) {
