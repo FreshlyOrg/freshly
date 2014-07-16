@@ -15,20 +15,35 @@ angular.module('freshly.activities', [])
 })
 
 .controller('ActivitiesController', function($scope, Activities) {
+
+  $scope.toggleActivity = function(activity) {
+    if (!$scope.editing) {
+      if (activity._id === $scope.viewActivity) {
+        $scope.viewActivity = null;
+      } else {
+        $scope.viewActivity = activity._id;
+      }
+    }
+  };
+
+  $scope.addTag = function(activity) {
+    if (activity.newTag) {
+      if (!Array.isArray(activity.tags)) {
+        activity.tags = [];
+      }
+      if (activity.tags.indexOf(activity.newTag) === -1) {
+        activity.tags.push(activity.newTag);
+      }
+    }
+    activity.newTag = '';
+  }
+
   $scope.refreshActivities = function() {
     Activities.getActivities().then(function(response) {
       $scope.activities = response.data;
     }).catch(function(err) {
       console.log(err);
     });
-  };
-
-  $scope.toggleActivity = function(activity) {
-    if (activity._id === $scope.viewActivity) {
-      $scope.viewActivity = null;
-    } else {
-      $scope.viewActivity = activity._id;
-    }
   };
 
   $scope.editActivity = function(activity) {
