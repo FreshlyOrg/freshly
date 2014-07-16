@@ -5,7 +5,7 @@
       <input type="text" placeholder="Search" ng-model="searchText" />
     </label>
     <ul class="list">
-      <li ng-repeat="activity in activities | filter:searchText | orderBy:'name'">
+      <li ng-click="toggleActivity(activity)" ng-repeat="activity in activities | filter:searchText | orderBy:'name'">
         <ng-activity></ng-activity>
       </li>
     </ul>

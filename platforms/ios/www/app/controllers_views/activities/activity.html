@@ -1,10 +1,10 @@
-<div class="list card">
+<div class="list card" id="{{activity._id}}">
   <div class="item">
     <label>
       <input type="text" placeholder="Name" ng-readonly="activity._id !== editing" ng-model="activity.name" />
     </label>
   </div>
-  <div class="item item-body" ng-if="true || viewActivity === activity._id">
+  <div class="item item-body" ng-if="viewActivity === activity._id">
     <div class="item-image">
       <img class="full-image" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSEy4tORxith4Jfc8Hm73fBfg6jzJx7D8WK7RJTGhvxKgjtl1RxZA" />
     </div>
@@ -22,16 +22,20 @@
     </label>
     <label class="item item-input" ng-if="activity._id === editing">
       <span class="input-label">New Tag</span>
-      <input type="text" placeholder="New Tag"><button class="button">Add Tag</button></input>
+      <input type="text" placeholder="New Tag" ng-model="activity.newTag"/>
     </label>
-    
-    <ul class="list">
-      <li ng-repeat="tag in activity.tags">
+    <button class="button button-full" ng-click="addTag(activity)" ng-if="activity._id === editing">Add Tag</button>
+
+    <div class="list" ng-if="activity.tags.length > 0">
+      <div class="item item-divider">
+        Tags
+      </div>
+      <div class="item" ng-repeat="tag in activity.tags">
         {{tag}}
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
-  <div class="item tabs tabs-secondary tabs-icon-center">
+  <div class="item tabs tabs-secondary tabs-icon-center" ng-if="viewActivity === activity._id">
     <button class="tab-item" ng-if="activity._id !== editing" ng-click="editActivity(activity)">
       <i class="icon ion-edit"></i>
     </button>
