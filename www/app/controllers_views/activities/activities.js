@@ -16,6 +16,8 @@ angular.module('freshly.activities', [])
 
 .controller('ActivitiesController', function($scope, Activities) {
 
+  //Hides or unhides the activity details
+  //so users can view many activities at once
   $scope.toggleActivity = function(activity) {
     if (!$scope.editing) {
       if (activity._id === $scope.viewActivity) {
@@ -26,6 +28,8 @@ angular.module('freshly.activities', [])
     }
   };
 
+  //Adds a tag to the activity object
+  //so that new tags can be saved to the database
   $scope.addTag = function(activity) {
     if (activity.newTag) {
       if (!Array.isArray(activity.tags)) {
@@ -38,24 +42,36 @@ angular.module('freshly.activities', [])
     activity.newTag = '';
   }
 
+  //Allows users to remove currently existing tags
+  $scope.removeTag = function(activity, tag) {
+    activity.tags.splice(activity.tags.indexOf(tag),1);
+  }
+
+  //Gets the activities list from the database
+  //so the view can be updated
   $scope.refreshActivities = function() {
-    Activities.getActivities().then(function(response) {
+    return Activities.getActivities().then(function(response) {
       $scope.activities = response.data;
-    }).catch(function(err) {
-      console.log(err);
     });
   };
 
+  //Changes the activity view to allow editing
   $scope.editActivity = function(activity) {
     $scope.savedActivity = activity;
     $scope.editing = activity._id;
   };
 
+  //Re-pulls activity data from the database
+  //in order to unstage changes made during editing
   $scope.cancelEdit = function(activity) {
-    $scope.editing = null;
-    $scope.refreshActivities();
+    $scope.refreshActivities().then(function() {
+      $scope.editing = null;
+    }).catch(function(err) {
+      console.log(err);
+    });
   };
 
+  //Updates the database with an edited activity
   $scope.saveEdit = function(activity) {
     Activities.updateActivity(activity).then(function(response) {
       $scope.editing = null;
@@ -64,6 +80,7 @@ angular.module('freshly.activities', [])
     });
   };
 
+  //Allows users to remove activities from the database
   $scope.deleteActivity = function(activity) {
     if (confirm("Are you sure you want to delete this activity?")) {
       Activities.deleteActivity(activity._id).then(function(response) {
@@ -75,6 +92,9 @@ angular.module('freshly.activities', [])
     }
   };
 
+  //Refreshes the activity list so it can be viewed
   $scope.activities = [];
-  $scope.refreshActivities();
+  $scope.refreshActivities().catch(function(err) {
+    console.log(err);
+  });
 });
