@@ -24,10 +24,12 @@ angular.module('freshly.activities', [])
   };
 
   $scope.toggleActivity = function(activity) {
-    if (activity._id === $scope.viewActivity) {
-      $scope.viewActivity = null;
-    } else {
-      $scope.viewActivity = activity._id;
+    if (!$scope.editing) {
+      if (activity._id === $scope.viewActivity) {
+        $scope.viewActivity = null;
+      } else {
+        $scope.viewActivity = activity._id;
+      }
     }
   };
 

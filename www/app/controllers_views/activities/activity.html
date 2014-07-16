@@ -4,7 +4,7 @@
       <input type="text" placeholder="Name" ng-readonly="activity._id !== editing" ng-model="activity.name" />
     </label>
   </div>
-  <div class="item item-body" ng-if="true || viewActivity === activity._id">
+  <div class="item item-body" ng-if="viewActivity === activity._id">
     <div class="item-image">
       <img class="full-image" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSEy4tORxith4Jfc8Hm73fBfg6jzJx7D8WK7RJTGhvxKgjtl1RxZA" />
     </div>
@@ -31,7 +31,7 @@
       </li>
     </ul>
   </div>
-  <div class="item tabs tabs-secondary tabs-icon-center">
+  <div class="item tabs tabs-secondary tabs-icon-center" ng-if="viewActivity === activity._id">
     <button class="tab-item" ng-if="activity._id !== editing" ng-click="editActivity(activity)">
       <i class="icon ion-edit"></i>
     </button>
