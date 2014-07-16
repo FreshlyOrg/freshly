@@ -31,7 +31,7 @@
         Tags
       </div>
       <div class="item" ng-repeat="tag in activity.tags">
-        {{tag}}
+        <span ng-click="removeTag(activity,tag)">{{tag}}</span>
       </div>
     </div>
   </div>
