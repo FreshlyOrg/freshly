@@ -14,7 +14,7 @@ angular.module('freshly.activities', [])
   })
 })
 
-.controller('ActivitiesController', function($scope, $location, Activities) {
+.controller('ActivitiesController', function($scope, Activities) {
 
   $scope.toggleActivity = function(activity) {
     if (!$scope.editing) {
@@ -24,8 +24,6 @@ angular.module('freshly.activities', [])
         $scope.viewActivity = activity._id;
       }
     }
-    $location.hash(activity._id);
-    $anchorScroll();
   };
 
   $scope.addTag = function(activity) {
