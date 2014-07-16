@@ -16,6 +16,8 @@ angular.module('freshly.capture', [])
 
 .controller('CaptureController', function($scope, Camera, Activities) {
 
+  $scope.activity = {};
+
   $scope.openCamera = function () {
     Camera.getPicture().then(function(imageURI) {
       // console.log(imageURI);
@@ -32,9 +34,11 @@ angular.module('freshly.capture', [])
 
   $scope.createPin = function () {
 
-    console.log('Name: ', this.name);
-    console.log('Description: ', this.description);
-    console.log('Current Photo: ', this.currentPhoto);
+  Activities.addActivity($scope.activity).then(function(response) {
+    console.log(response);
+  }).catch(function(err) {
+    console.err(err);
+  });
 
   };
 });
