@@ -1,4 +1,4 @@
-<div class="list card">
+<div class="list card" id="{{activity._id}}">
   <div class="item">
     <label>
       <input type="text" placeholder="Name" ng-readonly="activity._id !== editing" ng-model="activity.name" />
@@ -22,14 +22,18 @@
     </label>
     <label class="item item-input" ng-if="activity._id === editing">
       <span class="input-label">New Tag</span>
-      <input type="text" placeholder="New Tag"><button class="button">Add Tag</button></input>
+      <input type="text" placeholder="New Tag" ng-model="activity.newTag"/>
     </label>
-    
-    <ul class="list">
-      <li ng-repeat="tag in activity.tags">
+    <button class="button button-full" ng-click="addTag(activity)" ng-if="activity._id === editing">Add Tag</button>
+
+    <div class="list" ng-if="activity.tags.length > 0">
+      <div class="item item-divider">
+        Tags
+      </div>
+      <div class="item" ng-repeat="tag in activity.tags">
         {{tag}}
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
   <div class="item tabs tabs-secondary tabs-icon-center" ng-if="viewActivity === activity._id">
     <button class="tab-item" ng-if="activity._id !== editing" ng-click="editActivity(activity)">
