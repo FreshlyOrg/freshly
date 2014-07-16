@@ -14,7 +14,7 @@ angular.module('freshly.capture', [])
   });
 })
 
-.controller('CaptureController', function($scope, Camera, Activities) {
+.controller('CaptureController', function($scope, Camera, Activities, $state) {
 
   $scope.activity = {};
 
@@ -36,6 +36,7 @@ angular.module('freshly.capture', [])
 
   Activities.addActivity($scope.activity).then(function(response) {
     console.log(response);
+    $state.go('app.map');
   }).catch(function(err) {
     console.err(err);
   });
