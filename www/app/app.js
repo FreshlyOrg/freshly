@@ -12,7 +12,8 @@ angular.module('freshly', [
   'freshly.capture',
   'freshly.directives',
   'freshly.services',
-  'freshly.servicesCamera'
+  'freshly.servicesCamera',
+  'freshly.servicesMap'
 ])
 
 .run(function($ionicPlatform) {
