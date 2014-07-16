@@ -11,7 +11,8 @@ angular.module('freshly', [
   'freshly.map',
   'freshly.capture',
   'freshly.directives',
-  'freshly.services'
+  'freshly.services',
+  'freshly.servicesCamera'
 ])
 
 .run(function($ionicPlatform) {
@@ -36,10 +37,9 @@ angular.module('freshly', [
     url: '/app',
     abstract: true,
     templateUrl: 'app/app.html'
-  })
+  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/map');
 
 });
-

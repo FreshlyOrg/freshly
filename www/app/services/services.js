@@ -28,7 +28,7 @@ angular.module('freshly.services', [])
         url: 'http://fresh.ly/api/activities/' + activity._id,
         data: activity,
         dataType: 'json'
-      })
+      });
     },
     deleteActivity: function(activity_id) {
       return $http({
@@ -37,22 +37,4 @@ angular.module('freshly.services', [])
       });
     }
   };
-})
-
-// JASEN: Access the device's camera
-.factory('Camera', ['$q', function($q) {
-  return {
-    getPicture: function(options) {
-      var q = $q.defer();
-
-      navigator.camera.getPicture(function(result) {
-        // Do any magic you need
-        q.resolve(result);
-      }, function(err) {
-        q.reject(err);
-      }, options);
-
-      return q.promise;
-    }
-  };
-}]);
+});
