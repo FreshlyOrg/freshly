@@ -14,11 +14,12 @@ angular.module('freshly.capture', [])
   });
 })
 
-.controller('CaptureController', function($scope, Camera) {
+.controller('CaptureController', function($scope, Camera, Activities) {
+
   $scope.openCamera = function () {
     Camera.getPicture().then(function(imageURI) {
-      console.log(imageURI);
-      $scope.lastPhoto = imageURI;
+      // console.log(imageURI);
+      $scope.currentPhoto = imageURI;
     }, function(err) {
       console.err(err);
     } , {
@@ -27,5 +28,13 @@ angular.module('freshly.capture', [])
       targetHeight: 320,
       saveToPhotoAlbum: false
     });
+  };
+
+  $scope.createPin = function () {
+
+    console.log('Name: ', this.name);
+    console.log('Description: ', this.description);
+    console.log('Current Photo: ', this.currentPhoto);
+
   };
 });

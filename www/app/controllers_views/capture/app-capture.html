@@ -1,11 +1,26 @@
-<ion-view title="Capture Header Bar">
+<ion-view title="Capture">
   <ion-content class="has-header padding">
-    <!-- Button the captures photo -->
-    <button ng-click="openCamera()" class="button">Camera</button>
-    <img ng-src="{{lastPhoto}}" style="max-width: 100%">
+
+    <!-- Displays currentPhoto after taken -->
+    <img class="capturePhoto" ng-src="{{ currentPhoto }}">
+    </br>
+
+    <!-- Form to receive user-entered name and/or description -->
+    <div class="list">
+      <label class="item item-input">
+        <input type="text" placeholder="Activity Name" ng-model="name"/>
+      </label>
+
+      <label class="item item-input">
+        <textarea placeholder="Description" ng-model="description"></textarea>
+      </label>
+    </div>
+
+    <!-- Button the opens device's camera to take photo -->
+    <button ng-click="openCamera()" class="button">Take Photo</button>
 
     <!-- Button that saves photo to db and returns to map -->
-
+    <button ng-click="createPin()" class="button">Create Pin</button>
 
   </ion-content scroll="false">
 </ion-view>
