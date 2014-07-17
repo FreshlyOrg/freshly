@@ -50,11 +50,11 @@ angular.module('freshly.map', [
 
   leafletData.getMap('map').then(function(map) {
 
-    map.locate({setView: true, maxZoom: 16, watch: true, enableHighAccuracy: true, maximumAge: 15000, timeout: 3000000,});
-    map.on('locationfound', function(e){
-      // should show current location as a blue dot or something
-      LocationService.setLocation(e);
-    });
+    // map.locate({setView: true, maxZoom: 16, watch: true, enableHighAccuracy: true, maximumAge: 15000, timeout: 3000000,});
+    // map.on('locationfound', function(e){
+    //   // should show current location as a blue dot or something
+    //   LocationService.setLocation(e);
+    // });
 
     var markerGroup = new L.layerGroup();
     map.addLayer(markerGroup);
