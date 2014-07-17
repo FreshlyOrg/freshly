@@ -1,4 +1,4 @@
-angular.module('freshly.capture', [])
+angular.module('freshly.capture', ['geolocation'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -14,7 +14,7 @@ angular.module('freshly.capture', [])
   });
 })
 
-.controller('CaptureController', function($scope, Camera, GetLocation, Activities, $state) {
+.controller('CaptureController', function($scope, geolocation, Camera, Activities, $state) {
 
   // Object that holds all activity properties
   $scope.activity = {};
@@ -23,8 +23,9 @@ angular.module('freshly.capture', [])
   // $scope.activity.location = GetLocation();
   $scope.activity.location = "Loading...";
 
-  GetLocation.currentLocation().then(function(response) {
-    $scope.activity.location = response.latitude;
+  geolocation.getLocation().then(function(data){
+    $scope.activity.location = data.coords.latitude.toString() + ", " + 
+                                data.coords.latitude.toString();
   });
 
   // Opens camera and allows for photo to be taken and returns photo
