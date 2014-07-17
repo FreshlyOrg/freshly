@@ -16,20 +16,20 @@ angular.module('freshly.map', [
   });
 })
 
-.controller('MapController', [ "$scope", "Activities", "LocationService", "$log", "leafletData", function($scope, Activities, LocationService, $log, leafletData) {
-  
+.controller('MapController', [ "$scope", "Activities", "$log", "leafletData", function($scope, Activities, $log, leafletData) {
+
   // sets default zoom and sets the center to the users location with autoDiscover
   $scope.location = {
     zoom: 16,
     autoDiscover: true
   };
-  
+
   $scope.tiles = {
     url: "https://{s}.tiles.mapbox.com/v3/jakecadams.io9ec4o2/{z}/{x}/{y}.png",
     options: {
         attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms</a>'
     }
-  }
+  };
 
 
   var refreshActivities = function() {
@@ -44,7 +44,7 @@ angular.module('freshly.map', [
     {lat: 40.252149412988935,lng: -111.6533875465393},
     {lat: 40.252804476697165,lng: -111.64948225021361},
     {lat: 40.252804476697165,lng: -111.66040420532227}
-  ]
+  ];
 
 
 
@@ -53,7 +53,6 @@ angular.module('freshly.map', [
     map.locate({setView: true, maxZoom: 16, watch: true, enableHighAccuracy: true, maximumAge: 15000, timeout: 3000000,});
     map.on('locationfound', function(e){
       // should show current location as a blue dot or something
-      LocationService.setLocation(e);
     });
 
     var markerGroup = new L.layerGroup();
@@ -61,13 +60,13 @@ angular.module('freshly.map', [
     //right click on computer or hold on mobile
     map.on('contextmenu', function(e) {
       var marker = new L.marker(e.latlng);
-      markerGroup.addLayer(marker);     
+      markerGroup.addLayer(marker);
       var lat = e.latlng.lat;
       var lng = e.latlng.lng;
       var latlng = {
         lat: lat,
         lng: lng
-      }
+      };
       markers.push(latlng);
     });
 
@@ -76,7 +75,7 @@ angular.module('freshly.map', [
       for (var i = 0; i < markers.length; i++) {
         if(inBounds(markers[i], map)){
           var marker = new L.marker(markers[i]);
-          markerGroup.addLayer(marker);          
+          markerGroup.addLayer(marker);
         }
       }
       console.log('markerGroup', markerGroup.getLayers());
@@ -94,6 +93,6 @@ angular.module('freshly.map', [
       }
     }
     return false;
-  }
+  };
 
-}])
+}]);

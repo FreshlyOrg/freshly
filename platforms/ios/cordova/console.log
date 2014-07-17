@@ -57,3 +57,20 @@
 2014-07-17 11:31:57.042 Freshly[3862:70b] Resetting plugins due to page load.
 2014-07-17 11:31:57.309 Freshly[3862:70b] Finished load of: file:///Users/jasenlew/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/561A076D-7A6E-412F-A42F-65E53BA048A7/Freshly.app/www/index.html#/app/map
 Terminating in response to SpringBoard's termination.
+2014-07-17 13:14:39.987 Freshly[63318:70b] Multi-tasking -> Device: YES, App: YES
+2014-07-17 13:14:40.011 Freshly[63318:70b] Unlimited access to network resources
+2014-07-17 13:14:40.102 Freshly[63318:70b] [CDVTimer][keyboard] 0.088990ms
+2014-07-17 13:14:40.102 Freshly[63318:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-07-17 13:14:40.103 Freshly[63318:70b] [CDVTimer][statusbar] 0.340998ms
+2014-07-17 13:14:40.103 Freshly[63318:70b] [CDVTimer][TotalPluginStartup] 1.212001ms
+2014-07-17 13:14:40.173 Freshly[63318:70b] Resetting plugins due to page load.
+2014-07-17 13:14:40.425 Freshly[63318:70b] Finished load of: file:///Users/jasenlew/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/561A076D-7A6E-412F-A42F-65E53BA048A7/Freshly.app/www/index.html#/app/map
+Terminating in response to SpringBoard's termination.
+2014-07-17 13:26:06.089 Freshly[72213:70b] Multi-tasking -> Device: YES, App: YES
+2014-07-17 13:26:06.097 Freshly[72213:70b] Unlimited access to network resources
+2014-07-17 13:26:06.115 Freshly[72213:70b] [CDVTimer][keyboard] 0.100970ms
+2014-07-17 13:26:06.116 Freshly[72213:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-07-17 13:26:06.116 Freshly[72213:70b] [CDVTimer][statusbar] 0.325024ms
+2014-07-17 13:26:06.116 Freshly[72213:70b] [CDVTimer][TotalPluginStartup] 1.111984ms
+2014-07-17 13:26:06.193 Freshly[72213:70b] Resetting plugins due to page load.
+2014-07-17 13:26:06.414 Freshly[72213:70b] Finished load of: file:///Users/jasenlew/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/561A076D-7A6E-412F-A42F-65E53BA048A7/Freshly.app/www/index.html#/app/map

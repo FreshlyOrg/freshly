@@ -14,12 +14,14 @@ angular.module('freshly.capture', [])
   });
 })
 
-.controller('CaptureController', function($scope, Camera, LocationService, Activities, $state) {
+.controller('CaptureController', function($scope, Camera, GetLocation, Activities, $state) {
 
   $scope.activity = {};
 
   // Stores current location when go to capture state
-  $scope.activity.location = LocationService.getLocation();
+  // $scope.activity.location = GetLocation();
+  $scope.activity.location = GetLocation.currentLocation();
+  console.log("Scope.activity.location: ", $scope.activity.location);
 
   $scope.openCamera = function () {
     Camera.getPicture().then(function(imageURI) {
@@ -36,13 +38,15 @@ angular.module('freshly.capture', [])
   };
 
   $scope.createPin = function () {
+    console.log("Latitude: " + $scope.activity.location.latitude);
+    console.log("Longitude: " + $scope.activity.location.longitude);
 
-  Activities.addActivity($scope.activity).then(function(response) {
-    console.log(response);
-    $state.go('app.map');
-  }).catch(function(err) {
-    console.err(err);
-  });
-
+    Activities.addActivity($scope.activity).then(function(response) {
+      console.log(response);
+      $state.go('app.map');
+    }).catch(function(err) {
+      console.err(err);
+    });
   };
+
 });
