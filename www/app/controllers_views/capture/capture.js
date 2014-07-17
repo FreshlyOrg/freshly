@@ -4,7 +4,7 @@ angular.module('freshly.capture', [])
   $stateProvider
 
   .state('app.capture', {
-    url: '/capture',
+    url: '/capture/:location',
     views: {
       'app-capture': {
         templateUrl: 'app/controllers_views/capture/app-capture.html',
@@ -14,7 +14,11 @@ angular.module('freshly.capture', [])
   });
 })
 
-.controller('CaptureController', function($scope, Camera, GetLocation, Activities, $state) {
+.controller('CaptureController', function($scope, Camera, GetLocation, Activities, $state, $stateParams) {
+
+  
+  // DO WHAT YOU WILL WITH passedLocation
+  var passedLocation = JSON.parse($stateParams.location);
 
   // Object that holds all activity properties
   $scope.activity = {};

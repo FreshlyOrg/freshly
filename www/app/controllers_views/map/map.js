@@ -16,8 +16,8 @@ angular.module('freshly.map', [
   });
 })
 
-.controller('MapController', [ "$scope", "Activities", "$log", "leafletData", function($scope, Activities, $log, leafletData) {
-
+.controller('MapController', function($scope, $state, Activities, leafletData) {
+  
   // sets default zoom and sets the center to the users location with autoDiscover
   $scope.location = {
     zoom: 16,
@@ -50,10 +50,11 @@ angular.module('freshly.map', [
 
   leafletData.getMap('map').then(function(map) {
 
-    map.locate({setView: true, maxZoom: 16, watch: true, enableHighAccuracy: true, maximumAge: 15000, timeout: 3000000,});
-    map.on('locationfound', function(e){
-      // should show current location as a blue dot or something
-    });
+
+    // map.locate({setView: true, maxZoom: 16, watch: true, enableHighAccuracy: true, maximumAge: 15000, timeout: 3000000,});
+    // map.on('locationfound', function(e){
+    //   // should show current location as a blue dot or something
+    // });
 
     var markerGroup = new L.layerGroup();
     map.addLayer(markerGroup);
@@ -66,8 +67,10 @@ angular.module('freshly.map', [
       var latlng = {
         lat: lat,
         lng: lng
-      };
-      markers.push(latlng);
+
+      }
+
+      $state.go("^.capture", {"location": JSON.stringify(latlng)})
     });
 
     map.on('move', function(e) {
@@ -95,4 +98,5 @@ angular.module('freshly.map', [
     return false;
   };
 
-}]);
+
+});
