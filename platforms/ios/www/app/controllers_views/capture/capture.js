@@ -14,9 +14,12 @@ angular.module('freshly.capture', [])
   });
 })
 
-.controller('CaptureController', function($scope, Camera, Activities, $state) {
+.controller('CaptureController', function($scope, Camera, LocationService, Activities, $state) {
 
   $scope.activity = {};
+
+  // Stores current location when go to capture state
+  $scope.activity.location = LocationService.getLocation();
 
   $scope.openCamera = function () {
     Camera.getPicture().then(function(imageURI) {
