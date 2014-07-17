@@ -7,7 +7,7 @@
   display: block;
   margin: auto;
 
-  -webkit-box-shadow: -3px -3px 8px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow:    -3px -3px 8px 0px rgba(0, 0, 0, 0.75);
-  box-shadow:         -3px -3px 8px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 3px 3px 0px rgba(50, 50, 50, 0.8);
+  -moz-box-shadow:    3px 3px 3px 0px rgba(50, 50, 50, 0.8);
+  box-shadow:         3px 3px 3px 0px rgba(50, 50, 50, 0.8);
 }
