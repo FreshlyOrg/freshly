@@ -25,7 +25,7 @@ angular.module('freshly.capture', ['geolocation'])
 
   geolocation.getLocation().then(function(data){
     $scope.activity.location = data.coords.latitude.toString() + ", " + 
-                                data.coords.latitude.toString();
+                                data.coords.longitude.toString();
   });
 
   // Opens camera and allows for photo to be taken and returns photo
