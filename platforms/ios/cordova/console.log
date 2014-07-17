@@ -32,3 +32,28 @@
 2014-07-16 11:51:32.127 Freshly[24620:70b] Resetting plugins due to page load.
 2014-07-16 11:51:32.613 Freshly[24620:70b] Finished load of: file:///Users/jasenlew/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/561A076D-7A6E-412F-A42F-65E53BA048A7/Freshly.app/www/index.html#/app/map
 2014-07-16 11:52:55.184 Freshly[24620:70b] Camera.getPicture: source type 1 not available.
+2014-07-16 18:36:59.717 Freshly[93703:70b] Multi-tasking -> Device: YES, App: YES
+2014-07-16 18:36:59.729 Freshly[93703:70b] Unlimited access to network resources
+2014-07-16 18:36:59.896 Freshly[93703:70b] [CDVTimer][keyboard] 0.053048ms
+2014-07-16 18:36:59.896 Freshly[93703:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-07-16 18:36:59.897 Freshly[93703:70b] [CDVTimer][statusbar] 0.392973ms
+2014-07-16 18:36:59.897 Freshly[93703:70b] [CDVTimer][TotalPluginStartup] 1.214981ms
+2014-07-16 18:36:59.977 Freshly[93703:70b] Resetting plugins due to page load.
+2014-07-16 18:37:00.506 Freshly[93703:70b] Finished load of: file:///Users/jasenlew/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/561A076D-7A6E-412F-A42F-65E53BA048A7/Freshly.app/www/index.html#/app/map
+2014-07-17 10:35:00.788 Freshly[75650:70b] Multi-tasking -> Device: YES, App: YES
+2014-07-17 10:35:00.821 Freshly[75650:70b] Unlimited access to network resources
+2014-07-17 10:35:00.974 Freshly[75650:70b] [CDVTimer][keyboard] 0.087976ms
+2014-07-17 10:35:00.974 Freshly[75650:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-07-17 10:35:00.975 Freshly[75650:70b] [CDVTimer][statusbar] 0.554979ms
+2014-07-17 10:35:00.975 Freshly[75650:70b] [CDVTimer][TotalPluginStartup] 1.583993ms
+2014-07-17 10:35:01.173 Freshly[75650:70b] Resetting plugins due to page load.
+2014-07-17 10:35:01.917 Freshly[75650:70b] Finished load of: file:///Users/jasenlew/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/561A076D-7A6E-412F-A42F-65E53BA048A7/Freshly.app/www/index.html#/app/map
+2014-07-17 11:31:56.984 Freshly[3862:70b] Multi-tasking -> Device: YES, App: YES
+2014-07-17 11:31:56.992 Freshly[3862:70b] Unlimited access to network resources
+2014-07-17 11:31:57.007 Freshly[3862:70b] [CDVTimer][keyboard] 0.065982ms
+2014-07-17 11:31:57.008 Freshly[3862:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-07-17 11:31:57.008 Freshly[3862:70b] [CDVTimer][statusbar] 0.319004ms
+2014-07-17 11:31:57.008 Freshly[3862:70b] [CDVTimer][TotalPluginStartup] 1.106977ms
+2014-07-17 11:31:57.042 Freshly[3862:70b] Resetting plugins due to page load.
+2014-07-17 11:31:57.309 Freshly[3862:70b] Finished load of: file:///Users/jasenlew/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/561A076D-7A6E-412F-A42F-65E53BA048A7/Freshly.app/www/index.html#/app/map
+Terminating in response to SpringBoard's termination.
