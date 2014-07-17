@@ -61,13 +61,10 @@ angular.module('freshly.map', [
     //right click on computer or hold on mobile
     map.on('contextmenu', function(e) {
       var marker = new L.marker(e.latlng);
-      markerGroup.addLayer(marker);
-      var lat = e.latlng.lat;
-      var lng = e.latlng.lng;
+      markerGroup.addLayer(marker);     
       var latlng = {
-        lat: lat,
-        lng: lng
-
+        lat: e.latlng.lat,
+        lng: e.latlng.lng
       }
 
       $state.go("^.capture", {"location": JSON.stringify(latlng)})
@@ -81,7 +78,7 @@ angular.module('freshly.map', [
           markerGroup.addLayer(marker);
         }
       }
-      console.log('markerGroup', markerGroup.getLayers());
+      // console.log('markerGroup', markerGroup.getLayers());
     });
 
   });

@@ -19,6 +19,7 @@ angular.module('freshly.capture', [])
   
   // DO WHAT YOU WILL WITH passedLocation
   var passedLocation = JSON.parse($stateParams.location);
+  console.log('passedLocation', passedLocation);
 
   // Object that holds all activity properties
   $scope.activity = {};
