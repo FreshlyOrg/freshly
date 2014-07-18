@@ -72,7 +72,6 @@ angular.module('freshly.map', [
           var activities = $scope.activities;
 
           for (var i = 0; i < activities.length; i++) {
-            console.log(activities[i]);
             var latlng = {
               lat: activities[i].lat,
               lng: activities[i].lng
