@@ -41,7 +41,7 @@ angular.module('freshly.map', [
     });
   };
 
-  
+  var markers = {};
 
   leafletData.getMap('map').then(function(map) {
 
@@ -69,22 +69,33 @@ angular.module('freshly.map', [
     });
 
     map.on('move', function(e) {
-      markerGroup.clearLayers();
       getActivities(function(ready){
         if(ready){
           var activities = $scope.activities;
 
           for (var i = 0; i < activities.length; i++) {
-            var latlng = {
-              lat: activities[i].lat,
-              lng: activities[i].lng
+            var m = markers[activities[i]._id];
+            if(!m){
+              var latlng = {
+                lat: activities[i].lat,
+                lng: activities[i].lng
+              }
+              if(inBounds(latlng, map)){
+                var marker = new L.marker({lat: activities[i].lat,lng: activities[i].lng});
+                marker.bindPopup('<br>'+activities[i].name+'<br> - '+activities[i].description);
+                markerGroup.addLayer(marker);
+                activities[i].marker_id = marker._leaflet_id;
+                markers[activities[i]._id] = activities[i];
+              }
+            } else {
+              if(!inBounds(activities[i], map)){
+                markerGroup.removeLayer(m.marker_id);
+                delete markers[m._id]
+              }
             }
-            if(inBounds(latlng, map)){
-              var marker = new L.marker(latlng).bindPopup('<br>'+activities[i].name+'<br> - '+activities[i].description)
-              markerGroup.addLayer(marker);
-            }
-          }
-        }
+          }// end for loop
+
+        }// end ready callback
       });
     });
 
