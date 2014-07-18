@@ -47,16 +47,40 @@ angular.module('freshly.map', [
 
     var currLocation = new L.layerGroup();
     map.addLayer(currLocation);
-    map.locate({setView: true, maxZoom: 16, watch: true, enableHighAccuracy: true, maximumAge: 15000, timeout: 3000000,});
-    map.on('locationfound', function(e){
-      currLocation.clearLayers();
-      var marker = new L.circleMarker(e.latlng, {
-        radius: 7,
-        fillColor: 'rgb(51, 146, 213)',
-        color: 'rgb(51, 146, 213)'
-      })
-      currLocation.addLayer(marker);
-    });
+
+    var findLocation = function(successCallback) {
+      if (navigator.geolocation) {
+        options = { maximumAge: 5000, timeout: 5000 };
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
+      }
+
+      var errorCallback = function(data){
+        console.log("Geolocation error: ", data);
+      };
+    };
+
+    var getLocation = function(){
+      findLocation(function(e){
+        currLocation.clearLayers();
+        var circle = new L.circleMarker({
+          lat: e.coords.latitude,
+          lng: e.coords.longitude
+        }, {
+          radius: e.coords.accuracy/2,
+          fillColor: 'rgb(51, 146, 213)',
+          color: 'rgb(51, 146, 213)'
+        });
+
+        currLocation.addLayer(circle);
+      });
+    }
+
+    getLocation();
+
+    setInterval(function(){
+      getLocation();
+    },5000);
+
 
     var markerGroup = new L.layerGroup();
     map.addLayer(markerGroup);

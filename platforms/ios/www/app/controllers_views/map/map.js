@@ -41,51 +41,86 @@ angular.module('freshly.map', [
     });
   };
 
-  
+  var markers = {};
 
   leafletData.getMap('map').then(function(map) {
 
-    map.locate({setView: true, maxZoom: 16, watch: true, enableHighAccuracy: true, maximumAge: 15000, timeout: 3000000,});
-    map.on('locationfound', function(e){
-      // should show current location as a blue dot or something
-    });
+    var currLocation = new L.layerGroup();
+    map.addLayer(currLocation);
+
+    var findLocation = function(successCallback) {
+      if (navigator.geolocation) {
+        options = { maximumAge: 5000, timeout: 5000 };
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
+      }
+
+      var errorCallback = function(data){
+        console.log("Geolocation error: ", data);
+      };
+    };
+
+    var getLocation = function(){
+      findLocation(function(e){
+        currLocation.clearLayers();
+        var circle = new L.circleMarker({
+          lat: e.coords.latitude,
+          lng: e.coords.longitude
+        }, {
+          radius: e.coords.accuracy/2,
+          fillColor: 'rgb(51, 146, 213)',
+          color: 'rgb(51, 146, 213)'
+        });
+
+        currLocation.addLayer(circle);
+      });
+    }
+
+    getLocation();
+
+    setInterval(function(){
+      getLocation();
+    },5000);
+
 
     var markerGroup = new L.layerGroup();
     map.addLayer(markerGroup);
     //right click on computer or hold on mobile
     map.on('contextmenu', function(e) {
+      console.log('pix', e.containerPoint);
       var marker = new L.marker(e.latlng);
       markerGroup.addLayer(marker);
-      var lat = e.latlng.lat;
-      var lng = e.latlng.lng;
-      var latlng = {
-        lat: lat,
-        lng: lng
-      };
-      $state.go("^.capture", {"location": JSON.stringify(latlng)});
+      $state.go("^.capture", {"location": JSON.stringify({lat: e.latlng.lat, lng: e.latlng.lng})});
     });
 
     map.on('move', function(e) {
-      markerGroup.clearLayers();
       getActivities(function(ready){
         if(ready){
           var activities = $scope.activities;
 
           for (var i = 0; i < activities.length; i++) {
-            var latlng = {
-              lat: activities[i].lat,
-              lng: activities[i].lng
+            var m = markers[activities[i]._id];
+            if(!m){
+              var latlng = {
+                lat: activities[i].lat,
+                lng: activities[i].lng
+              }
+              if(inBounds(latlng, map)){
+                var marker = new L.marker({lat: activities[i].lat,lng: activities[i].lng});
+                marker.bindPopup('<br>'+activities[i].name+'<br> - '+activities[i].description);
+                markerGroup.addLayer(marker);
+                activities[i].marker_id = marker._leaflet_id;
+                markers[activities[i]._id] = activities[i];
+              }
+            } else {
+              if(!inBounds(activities[i], map)){
+                markerGroup.removeLayer(m.marker_id);
+                delete markers[m._id]
+              }
             }
-            if(inBounds(latlng, map)){
-              var marker = new L.marker(latlng).bindPopup('<br>'+activities[i].name+'<br> - '+activities[i].description)
-              markerGroup.addLayer(marker);
-            }
-          }
-        }
+          }// end for loop
+
+        }// end ready callback
       });
-
-
-      // console.log('markerGroup', markerGroup.getLayers());
     });
 
   });
