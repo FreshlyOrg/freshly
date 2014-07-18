@@ -1,4 +1,4 @@
-angular.module('freshly.capture', [])
+angular.module('freshly.capture', ['geolocation'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -14,15 +14,21 @@ angular.module('freshly.capture', [])
   });
 })
 
-.controller('CaptureController', function($scope, Camera, GetLocation, Activities, $state) {
+.controller('CaptureController', function($scope, geolocation, Camera, Activities, $state) {
 
+  // Object that holds all activity properties
   $scope.activity = {};
 
   // Stores current location when go to capture state
   // $scope.activity.location = GetLocation();
-  $scope.activity.location = GetLocation.currentLocation();
-  console.log("Scope.activity.location: ", $scope.activity.location);
+  $scope.activity.location = "Loading...";
 
+  geolocation.getLocation().then(function(data){
+    $scope.activity.location = data.coords.latitude.toString() + ", " + 
+                                data.coords.longitude.toString();
+  });
+
+  // Opens camera and allows for photo to be taken and returns photo
   $scope.openCamera = function () {
     Camera.getPicture().then(function(imageURI) {
       // console.log(imageURI);
@@ -37,7 +43,9 @@ angular.module('freshly.capture', [])
     });
   };
 
+  // Send new experience to db and return to app.map state
   $scope.createPin = function () {
+    // JASEN: The two console.logs below were used temporarily to figure out getLocation... can delete.
     console.log("Latitude: " + $scope.activity.location.latitude);
     console.log("Longitude: " + $scope.activity.location.longitude);
 

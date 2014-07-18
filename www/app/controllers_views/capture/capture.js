@@ -24,8 +24,28 @@ angular.module('freshly.capture', ['geolocation'])
   $scope.activity.location = "Loading...";
 
   geolocation.getLocation().then(function(data){
-    $scope.activity.location = data.coords.latitude.toString() + ", " + 
-                                data.coords.longitude.toString();
+    var lat = $scope.activity.location.latitude = data.coords.latitude;
+    var lng = $scope.activity.location.longitude = data.coords.longitude;
+
+    var latlng = new google.maps.LatLng(lat, lng);
+
+    // This is making the Geocode request
+    var geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+        if (status !== google.maps.GeocoderStatus.OK) {
+            alert(status);
+        }
+        // This is checking to see if the Geoeode Status is OK before proceeding
+        if (status == google.maps.GeocoderStatus.OK) {
+            console.log(results);
+            var address = (results[0].formatted_address);
+            console.log(address);
+            $scope.activity.location = address;
+        }
+    });
+
+    // $scope.activity.location = lat.toString() + ", " + lng.toString();
   });
 
   // Opens camera and allows for photo to be taken and returns photo
