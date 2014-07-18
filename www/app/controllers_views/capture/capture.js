@@ -19,42 +19,70 @@ angular.module('freshly.capture', [])
   // Object that holds all activity properties
   $scope.activity = {};
 
-  if ($stateParams.location) {
-    var passedLocation = JSON.parse($stateParams.location);
-    console.log("passedLocation.lat: ", passedLocation.lat);
-  }
-
   $scope.activity.address = "Loading...";
   $scope.activity.lat = '';
   $scope.activity.lng = '';
 
-  var getLocation = function(successCallback) {
-      if (navigator.geolocation) {
-          options = {
-            // max 5 seconds of possible cached position that is acceptable to return
-            maximumAge: 5000,
-            // max 5 seconds that is allowed to return a position
-            timeout: 5000,
-            // provid emore accurate position (may take more time, and more energy consumption on device)
-            enableHighAccuracy: true
-          };
+  if ($stateParams.location) {
+    var passedLocation = JSON.parse($stateParams.location);
 
-          navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
+    var lat = passedLocation.lat;
+    var lng = passedLocation.lng;
+
+    // Creates a LatLng object to be passed into reverse geocoder later
+    var latlng = new google.maps.LatLng(lat, lng);
+
+    // Makes a geocode request
+    var geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+      if (status !== google.maps.GeocoderStatus.OK) {
+        console.log(status);
       }
-      var errorCallback = function(data){
-        console.log("jl/geolocation error: ", data);
-      };
-  };
 
-  getLocation(function(data){
+      // This is checking to see if the Geoeode Status is OK before proceeding
+      if (status === google.maps.GeocoderStatus.OK) {
+        console.log(results);
+
+        // Grabs the first element's formatted address type
+        // NOTE: Total of 10 elements
+        var address = (results[0].formatted_address);
+        // console.log(address);
+
+        // Necessarily uses $apply to update the properties on the $scope
+        $scope.$apply(function () {
+          $scope.activity.address = address;
+          $scope.activity.lat = lat;
+          $scope.activity.lng = lng;
+        });
+      }
+    });
+  } else {
+    var getLocation = function(successCallback) {
+      if (navigator.geolocation) {
+        options = {
+          // max 5 seconds of possible cached position that is acceptable to return
+          maximumAge: 5000,
+          // max 5 seconds that is allowed to return a position
+          timeout: 5000,
+          // provid emore accurate position (may take more time, and more energy consumption on device)
+          enableHighAccuracy: true
+        };
+
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
+      }
+
+      var errorCallback = function(data){
+        console.log("Geolocation error: ", data);
+      };
+    };
+
+    getLocation(function(data){
       var lat = data.coords.latitude;
       var lng = data.coords.longitude;
-      console.log("lat: ", lat);
-      console.log("lng: ", lng);
 
       // Creates a LatLng object to be passed into reverse geocoder later
       var latlng = new google.maps.LatLng(lat, lng);
-      console.log("latlng object: ", latlng);
 
       // Makes a geocode request
       var geocoder = new google.maps.Geocoder();
@@ -70,7 +98,6 @@ angular.module('freshly.capture', [])
 
           // Grabs the first element's formatted address type - NOTE: Total of 10 elements
           var address = (results[0].formatted_address);
-          console.log(address);
 
           // Necessarily uses $apply to update the properties on the $scope
           $scope.$apply(function () {
@@ -80,7 +107,8 @@ angular.module('freshly.capture', [])
           });
         }
       });
-  });
+    });
+  }
 
 
   // Opens camera and allows for photo to be taken and returns photo
