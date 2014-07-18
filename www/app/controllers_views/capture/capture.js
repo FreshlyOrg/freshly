@@ -41,7 +41,10 @@ angular.module('freshly.capture', ['geolocation'])
             console.log(results);
             var address = (results[0].formatted_address);
             console.log(address);
-            $scope.activity.location = address;
+
+            $scope.$apply(function () {
+              $scope.activity.location = address;
+            });
         }
     });
 
