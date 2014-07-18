@@ -16,15 +16,13 @@ angular.module('freshly.capture', [])
 
 .controller('CaptureController', function($scope, Camera, Activities, $state, $stateParams) {
 
-  // DO WHAT YOU WILL WITH passedLocation
-  var passedLocation;
-  if($stateParams.location){
-    passedLocation = JSON.parse($stateParams.location);
-
-  }
-
   // Object that holds all activity properties
   $scope.activity = {};
+
+  if ($stateParams.location) {
+    var passedLocation = JSON.parse($stateParams.location);
+    console.log("passedLocation.lat: ", passedLocation.lat);
+  }
 
   $scope.activity.address = "Loading...";
   $scope.activity.lat = '';
@@ -32,12 +30,21 @@ angular.module('freshly.capture', [])
 
   var getLocation = function(successCallback) {
       if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {maximumAge:60000, timeout:5000, enableHighAccuracy:true});
+          options = {
+            // max 5 seconds of possible cached position that is acceptable to return
+            maximumAge: 5000,
+            // max 5 seconds that is allowed to return a position
+            timeout: 5000,
+            // provid emore accurate position (may take more time, and more energy consumption on device)
+            enableHighAccuracy: true
+          };
+
+          navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
       }
       var errorCallback = function(data){
-        console.log(data);
-      }
-  }
+        console.log("jl/geolocation error: ", data);
+      };
+  };
 
   getLocation(function(data){
       var lat = data.coords.latitude;

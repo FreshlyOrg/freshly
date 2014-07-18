@@ -16,7 +16,7 @@ angular.module('freshly.map', [
   });
 })
 
-.controller('MapController', [ "$scope", "Activities", "$log", "leafletData", function($scope, Activities, $log, leafletData) {
+.controller('MapController', function($scope, $state, Activities, leafletData) {
 
   // sets default zoom and sets the center to the users location with autoDiscover
   $scope.location = {
@@ -32,21 +32,16 @@ angular.module('freshly.map', [
   };
 
 
-  var refreshActivities = function() {
+  var getActivities = function(callback) {
     Activities.getActivities().then(function(response) {
       $scope.activities = response.data;
+      callback(true);
     }).catch(function(err) {
       console.log(err);
     });
   };
 
-  var markers = [
-    {lat: 40.252149412988935,lng: -111.6533875465393},
-    {lat: 40.252804476697165,lng: -111.64948225021361},
-    {lat: 40.252804476697165,lng: -111.66040420532227}
-  ];
-
-
+  
 
   leafletData.getMap('map').then(function(map) {
 
@@ -67,18 +62,30 @@ angular.module('freshly.map', [
         lat: lat,
         lng: lng
       };
-      markers.push(latlng);
+      $state.go("^.capture", {"location": JSON.stringify(latlng)});
     });
 
     map.on('move', function(e) {
       markerGroup.clearLayers();
-      for (var i = 0; i < markers.length; i++) {
-        if(inBounds(markers[i], map)){
-          var marker = new L.marker(markers[i]);
-          markerGroup.addLayer(marker);
+      getActivities(function(ready){
+        if(ready){
+          var activities = $scope.activities;
+
+          for (var i = 0; i < activities.length; i++) {
+            var latlng = {
+              lat: activities[i].lat,
+              lng: activities[i].lng
+            }
+            if(inBounds(latlng, map)){
+              var marker = new L.marker(latlng).bindPopup('<br>'+activities[i].name+'<br> - '+activities[i].description)
+              markerGroup.addLayer(marker);
+            }
+          }
         }
-      }
-      console.log('markerGroup', markerGroup.getLayers());
+      });
+
+
+      // console.log('markerGroup', markerGroup.getLayers());
     });
 
   });
@@ -95,4 +102,4 @@ angular.module('freshly.map', [
     return false;
   };
 
-}]);
+});
