@@ -4,7 +4,7 @@ angular.module('freshly.capture', ['geolocation'])
   $stateProvider
 
   .state('app.capture', {
-    url: '/capture',
+    url: '/capture/:location',
     views: {
       'app-capture': {
         templateUrl: 'app/controllers_views/capture/app-capture.html',
@@ -14,7 +14,11 @@ angular.module('freshly.capture', ['geolocation'])
   });
 })
 
-.controller('CaptureController', function($scope, geolocation, Camera, Activities, $state) {
+.controller('CaptureController', function($scope, geolocation, Camera, Activities, $state, $stateParams) {
+
+  // DO WHAT YOU WILL WITH passedLocation
+  var passedLocation = JSON.parse($stateParams.location);
+  console.log('passedLocation', passedLocation);
 
   // Object that holds all activity properties
   $scope.activity = {};
