@@ -1,4 +1,4 @@
-angular.module('freshly.capture', ['geolocation'])
+angular.module('freshly.capture', [])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -14,13 +14,13 @@ angular.module('freshly.capture', ['geolocation'])
   });
 })
 
-.controller('CaptureController', function($scope, geolocation, Camera, Activities, $state, $stateParams) {
+.controller('CaptureController', function($scope, Camera, Activities, $state, $stateParams) {
 
   // DO WHAT YOU WILL WITH passedLocation
   var passedLocation;
   if($stateParams.location){
     passedLocation = JSON.parse($stateParams.location);
-    console.log('passedLocation', passedLocation);
+
   }
 
   // Object that holds all activity properties
@@ -30,11 +30,16 @@ angular.module('freshly.capture', ['geolocation'])
   $scope.activity.lat = '';
   $scope.activity.lng = '';
 
-// >>>>>>>> THIS ISNT RUNNING WHEN REDIRECTED FROM MAPS
-  var getLocation = function(){
-    console.log('here');
-    geolocation.getLocation().then(function(data){
-      console.log('PRINT ME BRO!');
+  var getLocation = function(successCallback) {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {maximumAge:60000, timeout:5000, enableHighAccuracy:true});
+      }
+      var errorCallback = function(data){
+        console.log(data);
+      }
+  }
+
+  getLocation(function(data){
       var lat = data.coords.latitude;
       var lng = data.coords.longitude;
       console.log("lat: ", lat);
@@ -68,10 +73,8 @@ angular.module('freshly.capture', ['geolocation'])
           });
         }
       });
-    });
-  }
+  });
 
-  getLocation();
 
   // Opens camera and allows for photo to be taken and returns photo
   $scope.openCamera = function () {
