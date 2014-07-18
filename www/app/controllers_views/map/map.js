@@ -45,14 +45,17 @@ angular.module('freshly.map', [
 
   leafletData.getMap('map').then(function(map) {
 
-
+    var currLocation = new L.layerGroup();
+    map.addLayer(currLocation);
     map.locate({setView: true, maxZoom: 16, watch: true, enableHighAccuracy: true, maximumAge: 15000, timeout: 3000000,});
     map.on('locationfound', function(e){
+      currLocation.clearLayers();
       var marker = new L.circleMarker(e.latlng, {
         radius: 7,
         fillColor: 'rgb(51, 146, 213)',
         color: 'rgb(51, 146, 213)'
-    }).addTo(map);
+      })
+      currLocation.addLayer(marker);
     });
 
     var markerGroup = new L.layerGroup();
