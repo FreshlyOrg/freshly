@@ -45,24 +45,24 @@ angular.module('freshly.map', [
 
   leafletData.getMap('map').then(function(map) {
 
+
     map.locate({setView: true, maxZoom: 16, watch: true, enableHighAccuracy: true, maximumAge: 15000, timeout: 3000000,});
     map.on('locationfound', function(e){
-      // should show current location as a blue dot or something
+      var marker = new L.circleMarker(e.latlng, {
+        radius: 7,
+        fillColor: 'rgb(51, 146, 213)',
+        color: 'rgb(51, 146, 213)'
+    }).addTo(map);
     });
 
     var markerGroup = new L.layerGroup();
     map.addLayer(markerGroup);
     //right click on computer or hold on mobile
     map.on('contextmenu', function(e) {
+      console.log('pix', e.containerPoint);
       var marker = new L.marker(e.latlng);
       markerGroup.addLayer(marker);
-      var lat = e.latlng.lat;
-      var lng = e.latlng.lng;
-      var latlng = {
-        lat: lat,
-        lng: lng
-      };
-      $state.go("^.capture", {"location": JSON.stringify(latlng)});
+      $state.go("^.capture", {"location": JSON.stringify({lat: e.latlng.lat, lng: e.latlng.lng})});
     });
 
     map.on('move', function(e) {
@@ -83,9 +83,6 @@ angular.module('freshly.map', [
           }
         }
       });
-
-
-      // console.log('markerGroup', markerGroup.getLayers());
     });
 
   });
