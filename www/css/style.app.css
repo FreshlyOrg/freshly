@@ -7,4 +7,6 @@
   margin: auto;
   -webkit-box-shadow: 3px 3px 3px 0px rgba(50, 50, 50, 0.8);
   -moz-box-shadow: 3px 3px 3px 0px rgba(50, 50, 50, 0.8);
-  box-shadow: 3px 3px 3px 0px rgba(50, 50, 50, 0.8); }
+  -ms-box-shadow: 3px 3px 3px 0px rgba(50, 50, 50, 0.8);
+  -o-box-shadow: 3px 3px 3px 0px rgba(50, 50, 50, 0.8);
+  border-radius: 3px 3px 3px 0px rgba(50, 50, 50, 0.8); }
