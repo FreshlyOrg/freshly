@@ -1,4 +1,12 @@
 /* Custom scss code here */
+@mixin box-shadow($prop) {
+  -webkit-box-shadow: $prop;
+  -moz-box-shadow: $prop;
+  -ms-box-shadow: $prop;
+  -o-box-shadow: $prop;
+  border-radius: $prop;
+}
+
 .capturePhoto {
   max-width: 100%;
   max-height: 50%;
@@ -7,7 +15,5 @@
   display: block;
   margin: auto;
 
-  -webkit-box-shadow: 3px 3px 3px 0px rgba(50, 50, 50, 0.8);
-  -moz-box-shadow:    3px 3px 3px 0px rgba(50, 50, 50, 0.8);
-  box-shadow:         3px 3px 3px 0px rgba(50, 50, 50, 0.8);
+  @include box-shadow(3px 3px 3px 0px rgba(50, 50, 50, 0.8));
 }
