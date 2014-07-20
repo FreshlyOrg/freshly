@@ -1,5 +1,8 @@
 <ion-view title="Explore">
-  <ion-content class="has-header" scroll="false">
-    <leaflet id='map' center='location' tiles="tiles" height="100%" width="100%"></leaflet>
+  <ion-content class="has-header" scroll="false" style="height:100%">
+    <leaflet id="map" center="location" tiles="tiles" height="100%" width="100%"></leaflet>
+    <div ng-click="relocate()" class="map-control">
+      <div class="ion-navigate"></div>
+    </div>
   </ion-content>
 </ion-view>

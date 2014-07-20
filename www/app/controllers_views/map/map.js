@@ -18,6 +18,7 @@ angular.module('freshly.map', [
 
 .controller('MapController', function($scope, $state, Activities, LocationService, leafletData) {
 
+
   // sets default zoom and sets the center to the users location with autoDiscover
   $scope.location = {
     zoom: 16,
@@ -43,6 +44,12 @@ angular.module('freshly.map', [
   var markers = {};
 
   leafletData.getMap('map').then(function(map) {
+    $scope.currCoords;
+
+    $scope.relocate = function(){
+      map.panTo({lat: $scope.currCoords.latitude, lng: $scope.currCoords.longitude});
+    };
+
 
     var currLocation = new L.layerGroup();
     map.addLayer(currLocation);
@@ -51,6 +58,7 @@ angular.module('freshly.map', [
       LocationService.findCurrentLocation(function(e){
         currLocation.clearLayers();
         var circle = LocationService.createCircle(e.coords);
+        $scope.currCoords = e.coords;
         currLocation.addLayer(circle);
       });
     }

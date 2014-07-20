@@ -25,12 +25,12 @@ angular.module('freshly.servicesMap', [])
         return false;
       },
       createCircle: function(coords){
-        console.log('here');
         return new L.circleMarker({
             lat: coords.latitude,
             lng: coords.longitude
           }, {
-            radius: coords.accuracy/2,
+            // radius: coords.accuracy/2,
+            radius: 10,
             fillColor: 'rgb(51, 146, 213)',
             color: 'rgb(51, 146, 213)'
         });
