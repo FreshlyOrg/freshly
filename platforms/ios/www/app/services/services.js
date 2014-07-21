@@ -35,6 +35,32 @@ angular.module('freshly.services', [])
         method: 'DELETE',
         url: 'http://fresh.ly/api/activities/' + activity_id
       });
-    }
+    },
+    addImage: function(image, activity) {
+      var formData = new FormData();
+      formData.append('file', image);
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:8080/api/activities/' + activity._id + '/images',
+        headers: {
+          "Content-Type": undefined
+        },
+        transformRequest: angular.identity,
+        data: formData,
+      });
+    },
+    updateImage: function(image, activity, imageIndex) {
+      var formData = new FormData();
+      formData.append('file', image);
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:8080/api/activities/' + activity._id + '/images/' + imageIndex,
+        headers: {
+          "Content-Type": undefined
+        },
+        transformRequest: angular.identity,
+        data: formData,
+      });
+    },
   };
 });
