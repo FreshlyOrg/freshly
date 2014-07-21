@@ -92,17 +92,26 @@ angular.module('freshly.activities', [])
     }
   };
 
-  $scope.uploadFile = function(){
-    var image = $scope.myImage;
+  $scope.uploadFile = function(activity){
+    var image = $scope.imageData.myFile;
     if (activity.imageIds.length === 0) {
-      Activities.addImage()
+      Activities.addImage(image, activity['_id'])
+        .then($scope.refreshActivities)
+        .catch(function(err) {
+          console.log(err);
+        });
+    } else {
+      Activities.updateImage(image, activity['_id'], 0)
+        .then($scope.refreshActivities)
+        .catch(function(err) {
+          console.log(err);
+        });
     }
-    console.log('file is ' + JSON.stringify(image));
-    Activities.uploadFileToUrl(file, uploadUrl);
   };
 
   //Refreshes the activity list so it can be viewed
   $scope.activities = [];
+  $scope.imageData = {};
   $scope.refreshActivities().catch(function(err) {
     console.log(err);
   });

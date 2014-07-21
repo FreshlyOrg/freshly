@@ -36,12 +36,12 @@ angular.module('freshly.services', [])
         url: 'http://fresh.ly/api/activities/' + activity_id
       });
     },
-    addImage: function(image, activity) {
+    addImage: function(image, activity_id) {
       var formData = new FormData();
       formData.append('file', image);
       return $http({
         method: 'POST',
-        url: 'http://localhost:8080/api/activities/' + activity._id + '/images',
+        url: 'http://fresh.ly/api/activities/' + activity_id + '/images',
         headers: {
           "Content-Type": undefined
         },
@@ -49,12 +49,12 @@ angular.module('freshly.services', [])
         data: formData,
       });
     },
-    updateImage: function(image, activity, imageIndex) {
+    updateImage: function(image, activity_id, imageIndex) {
       var formData = new FormData();
       formData.append('file', image);
       return $http({
         method: 'PUT',
-        url: 'http://localhost:8080/api/activities/' + activity._id + '/images/' + imageIndex,
+        url: 'http://fresh.ly/api/activities/' + activity_id + '/images/' + imageIndex,
         headers: {
           "Content-Type": undefined
         },
