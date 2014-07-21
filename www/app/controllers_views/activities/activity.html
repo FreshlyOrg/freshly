@@ -8,6 +8,10 @@
     <div class="item-image">
       <img class="full-image" style="width:50%" src="http://fresh.ly/api/activities/{{activity._id}}/images/0" />
     </div>
+    <form name="imageUpdate">
+      <input type="file" file-model="myImage" />
+      <button ng-click="uploadFile()">upload me</button>
+    </form>
     <label class="item item-input">
       <span class="input-label">Description</span>
       <input type="text" placeholder="Description" ng-readonly="activity._id !== editing" ng-model="activity.description"/>

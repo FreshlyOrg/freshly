@@ -92,6 +92,15 @@ angular.module('freshly.activities', [])
     }
   };
 
+  $scope.uploadFile = function(){
+    var image = $scope.myImage;
+    if (activity.imageIds.length === 0) {
+      Activities.addImage()
+    }
+    console.log('file is ' + JSON.stringify(image));
+    Activities.uploadFileToUrl(file, uploadUrl);
+  };
+
   //Refreshes the activity list so it can be viewed
   $scope.activities = [];
   $scope.refreshActivities().catch(function(err) {
