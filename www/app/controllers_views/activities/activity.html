@@ -1,5 +1,5 @@
 <div class="list card" id="{{activity._id}}">
-  <div class="item">
+  <div class="item" ng-click="toggleActivity(activity)">
     <label>
       <input type="text" placeholder="Name" ng-readonly="activity._id !== editing" ng-model="activity.name" />
     </label>
@@ -8,6 +8,10 @@
     <div class="item-image">
       <img class="full-image" style="width:50%" src="http://fresh.ly/api/activities/{{activity._id}}/images/0" />
     </div>
+    
+    <input type="file" file-model="imageData.myFile"/>
+    <button ng-click="uploadFile(activity)">upload me</button>
+
     <label class="item item-input">
       <span class="input-label">Description</span>
       <input type="text" placeholder="Description" ng-readonly="activity._id !== editing" ng-model="activity.description"/>
