@@ -115,7 +115,9 @@ angular.module('freshly.capture', [])
   $scope.openCamera = function () {
     Camera.getPicture().then(function(imageURI) {
       // console.log(imageURI);
-      $scope.currentPhoto = imageURI;
+      $scope.$apply(function () {
+        $scope.currentPhoto = imageURI;
+      });
     }, function(err) {
       console.err(err);
     } , {
