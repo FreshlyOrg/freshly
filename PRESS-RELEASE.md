@@ -17,28 +17,31 @@ Once the project moves into development, the press release can be used as a touc
  -->
 
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Freshly.
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath e title.
+  > Easily capture, explore and share activities and experiences all around us.  The core question Freshly helps answer: "What can we do?"
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make is paragraph good.
+  > Most of us have found ourselves wanting to do "something" (an activity), but at the same time, not knowing exactly what to do.  It’s hard to Google because we don’t know exactly what we are looking for.  This app allows users to discover new activities that exist all around us, as well as capture activities and experiences that they want to do later.  Our vision is to become the place everyone naturally goes to when wanting to do something, because of our ease-of-use, as well as because of our breadth of activities and experiences (with our community we aim to become the Wikipedia of activities and experiences).
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > Ever felt like you’re in a rut and you’re not exactly sure what activities are available to you?  Interested in doing something fun, memorable and unique on Friday but not sure where to start? Do you want to find something fun and engaging for your children, but you feel like you’ve done everything around you?
+  > There’s no easy way right now to save and search for activities (there are TONS of date night apps, event apps, etc).  For instance, recurring events (sports leagues, classes, volunteering) have no centralized location, so finding one that fits (in terms of location, cost, schedule, type of activity) is extremely difficult, and time consuming.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > As a mobile-first app, Freshly allows you to capture, explore and share activities and experiences.  Freshly can capture and keep-track-of activities you want to do.  Freshly can also intelligently presents crowdsourced activities around you that you might have not been aware of before. Did you know that there is a Trampoline Dodgeball league in Neighborhood x?  Or that people love going to a local magician that has an intimate vibe in Neighborhood y?
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > "There are many activities that exist all around us, but many of the amazing ones are hidden from us.  Did you know there is a Trampoline Dodgeball League here in the city?  How about Segway Polo in the East Bay?  We seemingly can find standard tourist activities or things to do at clubs and bars; but, these type of activities only scratch the surface of the so-much that there is and can be done.  With Freshly, users can capture, explore and share activities and experiences all around us.  The beauty of Freshly is that you can easily save and later search for activities, as well as users will be able to add to the overall pool of activities.  Simply, the core question we answer is, "What can we do?"
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > On your smartPhone, download our app; or, in a browser go to our website: www.fresh.ly.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > "This app is so awesome.  I have discovered so many cool activities to do with my family and friends.  I can’t tell you how many times I wanted to do something, but just didn’t know where to go or how to Google it (because I don’t exactly know what I’m looking for).  I usually resort to staying home and surfing the Internet or watching TV.  There are a bunch of apps out there, but they seem to focus on more touristy stuff.  The amazing thing is that many of these activities were all around me, just hidden!  Freshly just helped me to uncover them."
+  > "Best way to find a sports league in San Francisco. Period.  They’ve got everything searchable by type, cost, day of the week, you name it."
+
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Go to the app store and download Freshly, or head to our website at Fresh.ly.  Begin living a fresh life.
