@@ -130,10 +130,32 @@ angular.module('freshly.capture', [])
   $scope.createPin = function () {
     Activities.addActivity($scope.activity).then(function(response) {
       console.log(response);
+
+      
+
       $state.go('app.map');
     }).catch(function(err) {
       console.err(err);
     });
   };
+
+
+  $scope.uploadFile = function(activity){
+    var image = $scope.imageData.myFile;
+    if (activity.imageIds.length === 0) {
+      Activities.addImage(image, activity['_id'])
+        .then($scope.refreshActivities)
+        .catch(function(err) {
+          console.log(err);
+        });
+    } else {
+      Activities.updateImage(image, activity['_id'], 0)
+        .then($scope.refreshActivities)
+        .catch(function(err) {
+          console.log(err);
+        });
+    }
+  };
+
 
 });

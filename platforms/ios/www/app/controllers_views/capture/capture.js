@@ -116,7 +116,6 @@ angular.module('freshly.capture', [])
     Camera.getPicture().then(function(imageURI) {
       // console.log(imageURI);
       $scope.currentPhoto = imageURI;
-      console.log("imageURI:", imageURI);
     }, function(err) {
       console.err(err);
     } , {
@@ -135,10 +134,6 @@ angular.module('freshly.capture', [])
     }).catch(function(err) {
       console.err(err);
     });
-  };
-
-  $scope.consoleLog = function () {
-    console.log("BOOM!!  'console.log' works!!");
   };
 
 });
