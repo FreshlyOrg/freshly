@@ -18,8 +18,11 @@ angular.module('freshly.capture', [])
 
   // Object that holds all activity properties
   $scope.activity = {};
+
+  // Object that holds photo to be taken
   $scope.imageData = {};
 
+  // Default values on Capture page load
   $scope.activity.address = "Loading...";
   $scope.activity.lat = '';
   $scope.activity.lng = '';
@@ -112,8 +115,8 @@ angular.module('freshly.capture', [])
   }
 
 
-  // Opens camera and allows for photo to be taken and returns photo
   /*
+  Opens camera and allows for photo to be taken and returns photo
   $scope.openCamera = function () {
     Camera.getPicture().then(function(imageURI) {
       // console.log(imageURI);
@@ -138,6 +141,7 @@ angular.module('freshly.capture', [])
 
       var image = $scope.imageData.myFile;
 
+      // If there is an image send to server
       if (image) {
         Activities.addImage(image, response.data.activity_id);
       }
