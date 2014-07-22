@@ -18,12 +18,17 @@ angular.module('freshly.map', [
 
 .controller('MapController', function($scope, $state, Activities, LocationService, leafletData) {
 
-
   // sets default zoom and sets the center to the users location with autoDiscover
   $scope.location = {
     zoom: 16,
-    autoDiscover: true
+    autoDiscover: true,
+    
   };
+
+  // turn off zoom control
+  $scope.defaults = {
+    zoomControl: false
+  }
 
   $scope.tiles = {
     url: "https://{s}.tiles.mapbox.com/v3/jakecadams.io9ec4o2/{z}/{x}/{y}.png",
@@ -44,6 +49,7 @@ angular.module('freshly.map', [
   var markers = {};
 
   leafletData.getMap('map').then(function(map) {
+    
     $scope.currCoords;
 
     $scope.relocate = function(){
@@ -62,6 +68,7 @@ angular.module('freshly.map', [
         currLocation.addLayer(circle);
       });
     }
+
     //call for first time
     getLocation();
 
@@ -80,6 +87,10 @@ angular.module('freshly.map', [
     });
 
     map.on('move', function(e) {
+
+      // forgive me for using jquery to turn off controls
+      // jQuery('.leaflet-left').hide();
+
       getActivities(function(ready){
         if(ready){
           var activities = $scope.activities;
@@ -113,3 +124,5 @@ angular.module('freshly.map', [
   });
 
 });
+
+
