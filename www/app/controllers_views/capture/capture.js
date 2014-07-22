@@ -18,6 +18,7 @@ angular.module('freshly.capture', [])
 
   // Object that holds all activity properties
   $scope.activity = {};
+  $scope.imageData = {};
 
   $scope.activity.address = "Loading...";
   $scope.activity.lat = '';
@@ -133,10 +134,13 @@ angular.module('freshly.capture', [])
     Activities.addActivity($scope.activity).then(function(response) {
       console.log('[JASEN] Response:', response);
       console.log('[JASEN] Response._id:', response.data.activity_id);
+      console.log('[JASEN] imageData.myFile:', $scope.imageData.myFile);
 
       var image = $scope.imageData.myFile;
 
-      Activities.addImage(image, response.data.activity_id);
+      if (image) {
+        Activities.addImage(image, response.data.activity_id);
+      }
 
       $state.go('app.map');
     }).catch(function(err) {

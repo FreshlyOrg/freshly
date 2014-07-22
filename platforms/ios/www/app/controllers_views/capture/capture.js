@@ -18,6 +18,7 @@ angular.module('freshly.capture', [])
 
   // Object that holds all activity properties
   $scope.activity = {};
+  $scope.imageData = {};
 
   $scope.activity.address = "Loading...";
   $scope.activity.lat = '';
@@ -112,6 +113,7 @@ angular.module('freshly.capture', [])
 
 
   // Opens camera and allows for photo to be taken and returns photo
+  /*
   $scope.openCamera = function () {
     Camera.getPicture().then(function(imageURI) {
       // console.log(imageURI);
@@ -125,11 +127,20 @@ angular.module('freshly.capture', [])
       saveToPhotoAlbum: false
     });
   };
+  */
 
   // Send new experience to db and return to app.map state
   $scope.createPin = function () {
     Activities.addActivity($scope.activity).then(function(response) {
-      console.log(response);
+      console.log('[JASEN] Response:', response);
+      console.log('[JASEN] Response._id:', response.data.activity_id);
+
+      console.log("imageData.myFile", $scope.imageData.myFile);
+
+      if ($scope.imageData.myFile) {
+        Activities.addImage($scope.imageData.myFile, response.data.activity_id);
+      }
+
       $state.go('app.map');
     }).catch(function(err) {
       console.err(err);
