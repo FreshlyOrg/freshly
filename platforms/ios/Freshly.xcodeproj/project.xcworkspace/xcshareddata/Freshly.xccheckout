@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F60B169E-8D21-4136-9843-05A372D35177</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Freshly</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D125CCC4-40EA-4AA8-8250-6DDBF28513B2</key>
+		<string>https://github.com/jasenlew/freshly.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>platforms/ios/Freshly.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D125CCC4-40EA-4AA8-8250-6DDBF28513B2</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jasenlew/freshly.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D125CCC4-40EA-4AA8-8250-6DDBF28513B2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D125CCC4-40EA-4AA8-8250-6DDBF28513B2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>freshly</string>
+		</dict>
+	</array>
+</dict>
+</plist>
