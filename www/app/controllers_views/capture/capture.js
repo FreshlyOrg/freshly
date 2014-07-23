@@ -136,14 +136,14 @@ angular.module('freshly.capture', [])
   $scope.createPin = function () {
     Activities.addActivity($scope.activity).then(function(response) {
       console.log('[JASEN] Response:', response);
-      console.log('[JASEN] Response._id:', response.data.activity_id);
+      console.log('[JASEN] Response..._id:', response.data.activity[0]._id);
       console.log('[JASEN] imageData.myFile:', $scope.imageData.myFile);
 
       var image = $scope.imageData.myFile;
 
       // If there is an image send to server
       if (image) {
-        Activities.addImage(image, response.data.activity_id);
+        Activities.addImage(image, response.data.activity[0]._id);
       }
 
       $state.go('app.map');
