@@ -20,6 +20,10 @@
     <!-- geolocation -->
     <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
+    <!-- jQuery used for displaying photo on Capture page after select -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+
     <!-- your app's js -->
     <script src="app/app.js"></script>
     <script src="app/controllers_views/activities/activities.js"></script>
@@ -32,6 +36,25 @@
 
     <script src="app/directives/directives.js"></script>
     <script src="app/directives/angular-leaflet-directive.js"></script>
+
+    <!-- Listens for when photo is selected in capture state -->
+    <script>
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            $('.capturePhoto').attr('src', e.target.result);
+          };
+
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+    </script>
+
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
