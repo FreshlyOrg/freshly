@@ -32,3 +32,27 @@
 .map-control:active{ 
   background-color: rgb(230, 230, 230);
 }
+
+.pin-info{
+  position: absolute;
+  font-size: 20px;
+  color: grey;
+  bottom: 100px;
+  width: 97%;
+  margin-left: 6px;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px #888888;
+}
+
+.info-close {
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.info-name {
+  color: #2883BC;
+}
+.info-desc {
+  font-size: 16px;
+}
