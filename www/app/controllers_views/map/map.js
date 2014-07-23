@@ -18,18 +18,21 @@ angular.module('freshly.map', [
 
 .controller('MapController', function($scope, $state, Activities, LocationService, leafletData) {
 
-  // sets default zoom and sets the center to the users location with autoDiscover
-  $scope.location = {
-    zoom: 16,
-    autoDiscover: true,
+  // angular directive
+  $scope.center = {
+    zoom: 16, // sets the first zoom level on instantiation
+    autoDiscover: true, // center location will be the current location of the user
     
   };
 
-  // turn off zoom control
+  // angular directive
+  // there are multiple properties that you can set on the map object with leaflet on instantiation
+  // see http://leafletjs.com/reference.html#map-options
   $scope.defaults = {
-    zoomControl: false
+    zoomControl: false // turn off zoom control
   }
 
+  // angular directive
   $scope.tiles = {
     url: "https://{s}.tiles.mapbox.com/v3/jakecadams.io9ec4o2/{z}/{x}/{y}.png",
     options: {
@@ -37,6 +40,8 @@ angular.module('freshly.map', [
     }
   };
 
+  // get all activities from the server, sets the possible activities to $scope.activities and 
+  // returns a callback with a boolean on completion
   var getActivities = function(callback) {
     Activities.getActivities().then(function(response) {
       $scope.activities = response.data;
@@ -46,16 +51,19 @@ angular.module('freshly.map', [
     });
   };
 
-  var markers = {};
 
+  var markers = {};
+  $scope.currCoords;
+  $scope.clicked;
+  $scope.pinInfo = false;
+
+  // leafletData is used if when wanting to interact directly with the leaflet API, must be used
+  // with a promise that returns the map object. 
   leafletData.getMap('map').then(function(map) {
     
-    $scope.currCoords;
-
     $scope.relocate = function(){
       map.panTo({lat: $scope.currCoords.latitude, lng: $scope.currCoords.longitude});
     };
-
 
     var currLocation = new L.layerGroup();
     map.addLayer(currLocation);
@@ -88,9 +96,6 @@ angular.module('freshly.map', [
 
     map.on('move', function(e) {
 
-      // forgive me for using jquery to turn off controls
-      // jQuery('.leaflet-left').hide();
-
       getActivities(function(ready){
         if(ready){
           var activities = $scope.activities;
@@ -103,8 +108,14 @@ angular.module('freshly.map', [
                 lng: activities[i].lng
               }
               if(LocationService.inBounds(latlng, map)){
-                var marker = new L.marker({lat: activities[i].lat,lng: activities[i].lng});
-                marker.bindPopup('<br>'+activities[i].name+'<br> - '+activities[i].description);
+                var marker = new L.marker({lat: activities[i].lat,lng: activities[i].lng}, activities[i]);
+                marker.on("click", function() {
+                  $scope.$apply(function(){
+                    $scope.clicked = this.options;
+                    $scope.pinInfo = true;
+                  }.apply(this));
+                });
+                
                 markerGroup.addLayer(marker);
                 activities[i].marker_id = marker._leaflet_id;
                 markers[activities[i]._id] = activities[i];
@@ -122,6 +133,10 @@ angular.module('freshly.map', [
     });
 
   });
+  
+  $scope.closeInfo = function(){
+    $scope.pinInfo = false;
+  }
 
 });
 

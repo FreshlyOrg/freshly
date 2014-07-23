@@ -1,8 +1,30 @@
 <ion-view title="Explore">
   <ion-content class="has-header" scroll="false" style="height:100%">
-    <leaflet id="map" defaults="defaults" center="location" tiles="tiles" height="89%" width="100%"></leaflet>
+    <leaflet id="map" defaults="defaults" center="center" tiles="tiles" height="89%" width="100%"></leaflet>
     <div ng-click="relocate()" class="map-control">
       <div class="ion-navigate"></div>
     </div>
+    <div class="pin-info" ng-show="pinInfo">
+      <div class="row">
+        <div class="col-25">
+          <img class="full-image" style="width:100%" src="http://fresh.ly/api/activities/{{clicked._id}}/images/0"/>
+        </div>
+        <div class="col-70" style="width:100%;">
+          <div class="row info-name">
+          {{clicked.name}}
+          </div>
+          <div class="row info-desc">
+            {{clicked.description}}
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="ion-close info-close" ng-click="closeInfo()"></div>
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
+
+<style>
+
+</style>
