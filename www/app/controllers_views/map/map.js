@@ -16,7 +16,7 @@ angular.module('freshly.map', [
   });
 })
 
-.controller('MapController', function($scope, $state, Activities, LocationService, leafletData) {
+.controller('MapController', function($scope, $state, Activities, LocationService, leafletData, leafletEvents) {
 
   // angular directive
   $scope.center = {
@@ -60,6 +60,8 @@ angular.module('freshly.map', [
   // leafletData is used if when wanting to interact directly with the leaflet API, must be used
   // with a promise that returns the map object. 
   leafletData.getMap('map').then(function(map) {
+
+    console.log(leafletEvents);
     
     $scope.relocate = function(){
       map.panTo({lat: $scope.currCoords.latitude, lng: $scope.currCoords.longitude});
@@ -85,15 +87,24 @@ angular.module('freshly.map', [
       getLocation();
     },5000);
 
+    // Groups several markers together, see: http://leafletjs.com/reference.html#layergroup
     var markerGroup = new L.layerGroup();
+    // the layer group can immediately be added to the map as a layer, 
+    // you can add and remove layers froup the layerGroup as you damn well please
     map.addLayer(markerGroup);
-    //right click on computer or hold on mobile
+
+    //contextmenu signifies a right click on computer or hold on mobile
     map.on('contextmenu', function(e) {
+      // this is only a temporary pin to show the user a pin will be added
       var marker = new L.marker(e.latlng);
       markerGroup.addLayer(marker);
+
+      // the user is then routed over to the capture view passing the lat and lng as parameters a JSON ojbect
       $state.go("^.capture", {"location": JSON.stringify({lat: e.latlng.lat, lng: e.latlng.lng})});
     });
 
+
+    // triggered anytime the map is moved in anyway (zoomed, panned, etc) as well as on instantiation
     map.on('move', function(e) {
 
       getActivities(function(ready){
@@ -109,7 +120,7 @@ angular.module('freshly.map', [
               }
               if(LocationService.inBounds(latlng, map)){
                 var marker = new L.marker({lat: activities[i].lat,lng: activities[i].lng}, activities[i]);
-                marker.on("click", function() {
+                marker.on("mouseover", function() {
                   $scope.$apply(function(){
                     $scope.clicked = this.options;
                     $scope.pinInfo = true;
@@ -117,12 +128,12 @@ angular.module('freshly.map', [
                 });
                 
                 markerGroup.addLayer(marker);
-                activities[i].marker_id = marker._leaflet_id;
+                activities[i]._leaflet_id = marker._leaflet_id;
                 markers[activities[i]._id] = activities[i];
               }
             } else {
               if(!LocationService.inBounds(activities[i], map)){
-                markerGroup.removeLayer(m.marker_id);
+                markerGroup.removeLayer(m._leaflet_id);
                 delete markers[m._id];
               }
             }
