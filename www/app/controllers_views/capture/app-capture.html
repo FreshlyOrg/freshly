@@ -12,21 +12,29 @@
       </label>
 
       <label class="item item-input">
+        <input type="text" placeholder="{{ activity.address }}" ng-model="activity.address"/>
+      </label>
+
+      <label class="item item-input">
         <input type="text" placeholder="Description" ng-model="activity.description"/>
       </label>
 
       <label class="item item-input">
-        <input type="text" placeholder="{{ activity.address }}" ng-model="activity.address"/>
+        <input type="text" placeholder="Cost" ng-model="activity.cost"/>
+      </label>
+
+      <label class="item item-input">
+        <input type="text" placeholder="Time" ng-model="activity.time"/>
       </label>
     </div>
 
     <!-- Button that allows for choosing photo from album or taking phone -->
     <!-- Runs readURL (which is in a script in index.html) when photo selected -->
     <div style="position:relative">
-      <input type="file" onchange="readURL(this)" file-model="imageData.myFile"/>
-      <button class="button uploadWrapper">Take Photo</button>
+      <input type="file" onchange="readURL(this)"ab file-model="imageData.myFile"/>
+      <button class="button ion-android-camera uploadWrapper"> Take Photo</button>
       <!-- Button that saves photo to db and returns to map -->
-      <button ng-click="createPin()" class="button">Create Pin</button>
+      <button ng-click="createPin()" class="button ion-android-location"> Create Pin</button>
     </div>
   </ion-content scroll="false">
 </ion-view>
