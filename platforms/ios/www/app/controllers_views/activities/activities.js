@@ -93,6 +93,8 @@ angular.module('freshly.activities', [])
   };
 
   $scope.uploadFile = function(activity){
+
+
     var image = $scope.imageData.myFile;
     if (activity.imageIds.length === 0) {
       Activities.addImage(image, activity['_id'])
