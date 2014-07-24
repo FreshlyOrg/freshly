@@ -173,3 +173,35 @@ objc[19829]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.a
 2014-07-24 00:00:52.392 Freshly[19829:70b] [CDVTimer][TotalPluginStartup] 2.133012ms
 2014-07-24 00:00:53.804 Freshly[19829:70b] Resetting plugins due to page load.
 2014-07-24 00:00:55.807 Freshly[19829:70b] Finished load of: file:///Users/jakeadams/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/20F41A66-D373-47D9-AF57-3449989142CA/Freshly.app/www/index.html#/app/map
+objc[20672]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-07-24 01:01:22.994 Freshly[20672:70b] Cannot find executable for CFBundle 0xa38b7b0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-07-24 01:01:23.002 Freshly[20672:70b] Cannot find executable for CFBundle 0xa3a7510 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-07-24 01:01:23.084 Freshly[20672:70b] Multi-tasking -> Device: YES, App: YES
+2014-07-24 01:01:23.138 Freshly[20672:70b] Unlimited access to network resources
+2014-07-24 01:01:25.249 Freshly[20672:70b] [CDVTimer][keyboard] 0.079989ms
+2014-07-24 01:01:25.249 Freshly[20672:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-07-24 01:01:25.250 Freshly[20672:70b] [CDVTimer][statusbar] 0.445008ms
+2014-07-24 01:01:25.250 Freshly[20672:70b] [CDVTimer][TotalPluginStartup] 1.538992ms
+2014-07-24 01:01:25.579 Freshly[20672:70b] Resetting plugins due to page load.
+objc[20675]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-07-24 01:01:26.447 Freshly[20675:70b] Cannot find executable for CFBundle 0xa3992d0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-07-24 01:01:26.454 Freshly[20675:70b] Cannot find executable for CFBundle 0xa4b55e0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-07-24 01:01:26.920 Freshly[20675:70b] Multi-tasking -> Device: YES, App: YES
+2014-07-24 01:01:26.930 Freshly[20675:70b] Unlimited access to network resources
+2014-07-24 01:01:26.951 Freshly[20675:70b] [CDVTimer][keyboard] 0.072002ms
+2014-07-24 01:01:26.952 Freshly[20675:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-07-24 01:01:26.952 Freshly[20675:70b] [CDVTimer][statusbar] 0.441015ms
+2014-07-24 01:01:26.952 Freshly[20675:70b] [CDVTimer][TotalPluginStartup] 1.516998ms
+2014-07-24 01:01:27.012 Freshly[20675:70b] Resetting plugins due to page load.
+2014-07-24 01:01:27.809 Freshly[20675:70b] Finished load of: file:///Users/jakeadams/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/20F41A66-D373-47D9-AF57-3449989142CA/Freshly.app/www/index.html#/app/map
+objc[21129]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-07-24 01:02:12.724 Freshly[21129:70b] Cannot find executable for CFBundle 0xa394e20 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-07-24 01:02:12.798 Freshly[21129:70b] Cannot find executable for CFBundle 0xa3b0eb0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-07-24 01:02:13.009 Freshly[21129:70b] Multi-tasking -> Device: YES, App: YES
+2014-07-24 01:02:13.020 Freshly[21129:70b] Unlimited access to network resources
+2014-07-24 01:02:13.050 Freshly[21129:70b] [CDVTimer][keyboard] 0.122964ms
+2014-07-24 01:02:13.051 Freshly[21129:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-07-24 01:02:13.051 Freshly[21129:70b] [CDVTimer][statusbar] 0.666022ms
+2014-07-24 01:02:13.052 Freshly[21129:70b] [CDVTimer][TotalPluginStartup] 2.375960ms
+2014-07-24 01:02:13.225 Freshly[21129:70b] Resetting plugins due to page load.
+2014-07-24 01:02:14.080 Freshly[21129:70b] Finished load of: file:///Users/jakeadams/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/20F41A66-D373-47D9-AF57-3449989142CA/Freshly.app/www/index.html#/app/map

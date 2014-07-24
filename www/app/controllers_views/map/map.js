@@ -103,9 +103,6 @@ angular.module('freshly.map', [
       $state.go("^.capture", {"location": JSON.stringify({lat: e.latlng.lat, lng: e.latlng.lng})});
     });
 
-    map.on('click', function(e) {
-      console.log('map click');
-    });
     // triggered anytime the map is moved in anyway (zoomed, panned, etc) as well as on instantiation
     map.on('move', function(e) {
 
