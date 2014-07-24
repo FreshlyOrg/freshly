@@ -4,7 +4,7 @@
     <div ng-click="relocate()" class="map-control">
       <div class="ion-navigate"></div>
     </div>
-    <div class="pin-info" ng-show="pinInfo">
+    <div class="pin-info" ng-if="pinInfo">
       <div class="row">
         <div class="col-25">
           <img class="full-image" style="width:100%" src="http://fresh.ly/api/activities/{{clicked._id}}/images/0"/>
