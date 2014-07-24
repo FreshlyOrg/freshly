@@ -37,7 +37,7 @@
     <script src="app/directives/directives.js"></script>
     <script src="app/directives/angular-leaflet-directive.js"></script>
 
-    <!-- Listens for when photo is selected in capture state -->
+    <!-- Triggered when photo is selected in order to render in capture and activity states-->
     <script>
       function readURL(input) {
         if (input.files && input.files[0]) {
@@ -45,6 +45,8 @@
 
           reader.onload = function (e) {
             $('.capturePhoto').attr('src', e.target.result);
+            // For activity.html
+            $('.full-image').attr('src', e.target.result);
           };
 
           reader.readAsDataURL(input.files[0]);

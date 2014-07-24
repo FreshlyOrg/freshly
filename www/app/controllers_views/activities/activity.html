@@ -6,10 +6,11 @@
   </div>
   <div class="item item-body" ng-if="viewActivity === activity._id">
     <div class="item-image">
+      <!-- If photo is taken from camera, then display photo via capturePhoto class-->
       <img class="full-image" style="width:50%" src="http://fresh.ly/api/activities/{{activity._id}}/images/0" />
     </div>
 
-    <input type="file" file-model="imageData.myFile"/>
+    <input type="file" onchange="readURL(this)" file-model="imageData.myFile"/>
     <button ng-click="uploadFile(activity)">upload me</button>
 
     <label class="item item-input">

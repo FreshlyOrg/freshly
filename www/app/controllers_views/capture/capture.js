@@ -114,6 +114,10 @@ angular.module('freshly.capture', [])
     });
   }
 
+  // JASEN: DOES NOT WORK!!
+  $scope.renderPicture = function (input) {
+    Camera.renderPicture(input);
+  };
 
   /*
   Opens camera and allows for photo to be taken and returns photo
